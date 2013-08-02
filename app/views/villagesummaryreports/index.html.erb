@@ -1,0 +1,41 @@
+<h1>Listing villagesummaryreports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Village</th>
+      <th>Children enrolled</th>
+      <th>Children attended</th>
+      <th>Class working days</th>
+      <th>Current cpi</th>
+      <th>Activities html</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @villagesummaryreports.each do |villagesummaryreport| %>
+      <tr>
+        <td><%= villagesummaryreport.village %></td>
+        <td><%= villagesummaryreport.children_enrolled %></td>
+        <td><%= villagesummaryreport.children_attended %></td>
+        <td><%= villagesummaryreport.class_working_days %></td>
+        <td><%= villagesummaryreport.current_cpi %></td>
+        <td><%= villagesummaryreport.activities_html %></td>
+        <td><%= villagesummaryreport.start_date %></td>
+        <td><%= villagesummaryreport.end_date %></td>
+        <td><%= link_to 'Show', villagesummaryreport %></td>
+        <td><%= link_to 'Edit', edit_villagesummaryreport_path(villagesummaryreport) %></td>
+        <td><%= link_to 'Destroy', villagesummaryreport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Villagesummaryreport', new_villagesummaryreport_path %>

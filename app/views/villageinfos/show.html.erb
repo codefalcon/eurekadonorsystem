@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Village:</strong>
+  <%= @villageinfo.village %>
+</p>
+
+<p>
+  <strong>Funding status:</strong>
+  <%= @villageinfo.funding_status %>
+</p>
+
+<p>
+  <strong>Total funding required:</strong>
+  <%= @villageinfo.total_funding_required %>
+</p>
+
+<p>
+  <strong>Initial cpi:</strong>
+  <%= @villageinfo.initial_cpi %>
+</p>
+
+<p>
+  <strong>Ngo name:</strong>
+  <%= @villageinfo.ngo_name %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @villageinfo.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @villageinfo.end_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @villageinfo.status %>
+</p>
+
+<p>
+  <strong>Local contributions:</strong>
+  <%= @villageinfo.local_contributions %>
+</p>
+
+<%= link_to 'Edit', edit_villageinfo_path(@villageinfo) %> |
+<%= link_to 'Back', villageinfos_path %>

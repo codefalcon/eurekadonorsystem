@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  village_id: 
+  children_enrolled: 1
+  children_attended: 1
+  class_working_days: 1
+  current_cpi: 1
+  activities_html: MyString
+  start_date: 2013-07-31
+  end_date: 2013-07-31
+
+two:
+  village_id: 
+  children_enrolled: 1
+  children_attended: 1
+  class_working_days: 1
+  current_cpi: 1
+  activities_html: MyString
+  start_date: 2013-07-31
+  end_date: 2013-07-31

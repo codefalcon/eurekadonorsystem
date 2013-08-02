@@ -1,0 +1,15 @@
+class CreateDonorinfos < ActiveRecord::Migration
+  def change
+    create_table :donorinfos do |t|
+      t.references :user, index: true
+      t.integer :type
+      t.decimal :amount_donated
+      t.decimal :amount_used
+      t.date :start_date
+      t.date :end_date
+      t.integer :status
+
+      t.timestamps
+    end
+  end
+end

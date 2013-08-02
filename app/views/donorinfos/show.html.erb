@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @donorinfo.user %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @donorinfo.type %>
+</p>
+
+<p>
+  <strong>Amount donated:</strong>
+  <%= @donorinfo.amount_donated %>
+</p>
+
+<p>
+  <strong>Amount used:</strong>
+  <%= @donorinfo.amount_used %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @donorinfo.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @donorinfo.end_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @donorinfo.status %>
+</p>
+
+<%= link_to 'Edit', edit_donorinfo_path(@donorinfo) %> |
+<%= link_to 'Back', donorinfos_path %>

@@ -1,0 +1,43 @@
+<h1>Listing villageinfos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Village</th>
+      <th>Funding status</th>
+      <th>Total funding required</th>
+      <th>Initial cpi</th>
+      <th>Ngo name</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Status</th>
+      <th>Local contributions</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @villageinfos.each do |villageinfo| %>
+      <tr>
+        <td><%= villageinfo.village %></td>
+        <td><%= villageinfo.funding_status %></td>
+        <td><%= villageinfo.total_funding_required %></td>
+        <td><%= villageinfo.initial_cpi %></td>
+        <td><%= villageinfo.ngo_name %></td>
+        <td><%= villageinfo.start_date %></td>
+        <td><%= villageinfo.end_date %></td>
+        <td><%= villageinfo.status %></td>
+        <td><%= villageinfo.local_contributions %></td>
+        <td><%= link_to 'Show', villageinfo %></td>
+        <td><%= link_to 'Edit', edit_villageinfo_path(villageinfo) %></td>
+        <td><%= link_to 'Destroy', villageinfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Villageinfo', new_villageinfo_path %>

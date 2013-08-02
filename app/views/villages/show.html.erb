@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @village.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @village.status %>
+</p>
+
+<p>
+  <strong>Block:</strong>
+  <%= @village.block %>
+</p>
+
+<%= link_to 'Edit', edit_village_path(@village) %> |
+<%= link_to 'Back', villages_path %>

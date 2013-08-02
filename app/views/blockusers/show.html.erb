@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Block:</strong>
+  <%= @blockuser.block %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @blockuser.user %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @blockuser.role %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @blockuser.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @blockuser.end_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @blockuser.status %>
+</p>
+
+<%= link_to 'Edit', edit_blockuser_path(@blockuser) %> |
+<%= link_to 'Back', blockusers_path %>

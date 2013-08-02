@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Village:</strong>
+  <%= @villagesummaryreport.village %>
+</p>
+
+<p>
+  <strong>Children enrolled:</strong>
+  <%= @villagesummaryreport.children_enrolled %>
+</p>
+
+<p>
+  <strong>Children attended:</strong>
+  <%= @villagesummaryreport.children_attended %>
+</p>
+
+<p>
+  <strong>Class working days:</strong>
+  <%= @villagesummaryreport.class_working_days %>
+</p>
+
+<p>
+  <strong>Current cpi:</strong>
+  <%= @villagesummaryreport.current_cpi %>
+</p>
+
+<p>
+  <strong>Activities html:</strong>
+  <%= @villagesummaryreport.activities_html %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @villagesummaryreport.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @villagesummaryreport.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_villagesummaryreport_path(@villagesummaryreport) %> |
+<%= link_to 'Back', villagesummaryreports_path %>

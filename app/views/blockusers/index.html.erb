@@ -1,0 +1,37 @@
+<h1>Listing blockusers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Block</th>
+      <th>User</th>
+      <th>Role</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blockusers.each do |blockuser| %>
+      <tr>
+        <td><%= blockuser.block %></td>
+        <td><%= blockuser.user %></td>
+        <td><%= blockuser.role %></td>
+        <td><%= blockuser.start_date %></td>
+        <td><%= blockuser.end_date %></td>
+        <td><%= blockuser.status %></td>
+        <td><%= link_to 'Show', blockuser %></td>
+        <td><%= link_to 'Edit', edit_blockuser_path(blockuser) %></td>
+        <td><%= link_to 'Destroy', blockuser, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Blockuser', new_blockuser_path %>

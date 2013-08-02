@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  village_id: 
+  funding_status: 1
+  total_funding_required: 9.99
+  initial_cpi: 1
+  ngo_name: MyString
+  start_date: 2013-07-31
+  end_date: 2013-07-31
+  status: 1
+  local_contributions: 9.99
+
+two:
+  village_id: 
+  funding_status: 1
+  total_funding_required: 9.99
+  initial_cpi: 1
+  ngo_name: MyString
+  start_date: 2013-07-31
+  end_date: 2013-07-31
+  status: 1
+  local_contributions: 9.99
