@@ -1,0 +1,13 @@
+class CreateVillageinfos < ActiveRecord::Migration
+  def change
+    create_table :villageinfos do |t|
+      t.references :village, index: true
+      t.integer :funding_status
+      t.decimal :total_funding_required
+      t.integer :initial_cpi
+      t.string :ngo_name
+
+      t.timestamps
+    end
+  end
+end

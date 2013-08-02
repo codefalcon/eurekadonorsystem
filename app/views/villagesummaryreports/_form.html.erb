@@ -1,0 +1,49 @@
+<%= form_for(@villagesummaryreport) do |f| %>
+  <% if @villagesummaryreport.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@villagesummaryreport.errors.count, "error") %> prohibited this villagesummaryreport from being saved:</h2>
+
+      <ul>
+      <% @villagesummaryreport.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :village %><br>
+    <%= f.text_field :village %>
+  </div>
+  <div class="field">
+    <%= f.label :children_enrolled %><br>
+    <%= f.number_field :children_enrolled %>
+  </div>
+  <div class="field">
+    <%= f.label :children_attended %><br>
+    <%= f.number_field :children_attended %>
+  </div>
+  <div class="field">
+    <%= f.label :class_working_days %><br>
+    <%= f.number_field :class_working_days %>
+  </div>
+  <div class="field">
+    <%= f.label :current_cpi %><br>
+    <%= f.number_field :current_cpi %>
+  </div>
+  <div class="field">
+    <%= f.label :activities_html %><br>
+    <%= f.text_field :activities_html %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

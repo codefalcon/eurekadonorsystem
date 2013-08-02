@@ -1,0 +1,53 @@
+<%= form_for(@villageinfo) do |f| %>
+  <% if @villageinfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@villageinfo.errors.count, "error") %> prohibited this villageinfo from being saved:</h2>
+
+      <ul>
+      <% @villageinfo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :village %><br>
+    <%= f.text_field :village %>
+  </div>
+  <div class="field">
+    <%= f.label :funding_status %><br>
+    <%= f.number_field :funding_status %>
+  </div>
+  <div class="field">
+    <%= f.label :total_funding_required %><br>
+    <%= f.text_field :total_funding_required %>
+  </div>
+  <div class="field">
+    <%= f.label :initial_cpi %><br>
+    <%= f.number_field :initial_cpi %>
+  </div>
+  <div class="field">
+    <%= f.label :ngo_name %><br>
+    <%= f.text_field :ngo_name %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.number_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :local_contributions %><br>
+    <%= f.text_field :local_contributions %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
