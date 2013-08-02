@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  village_id: 
+  user_id: 
+  start_date: 2013-07-31
+  end_date: 2013-07-31
+  amount_for_village: 9.99
+  status: 1
+
+two:
+  village_id: 
+  user_id: 
+  start_date: 2013-07-31
+  end_date: 2013-07-31
+  amount_for_village: 9.99
+  status: 1

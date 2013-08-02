@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Village:</strong>
+  <%= @villageuser.village %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @villageuser.user %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @villageuser.role %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @villageuser.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @villageuser.end_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @villageuser.status %>
+</p>
+
+<%= link_to 'Edit', edit_villageuser_path(@villageuser) %> |
+<%= link_to 'Back', villageusers_path %>

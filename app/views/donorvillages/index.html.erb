@@ -1,0 +1,37 @@
+<h1>Listing donorvillages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Village</th>
+      <th>User</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Amount for village</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @donorvillages.each do |donorvillage| %>
+      <tr>
+        <td><%= donorvillage.village %></td>
+        <td><%= donorvillage.user %></td>
+        <td><%= donorvillage.start_date %></td>
+        <td><%= donorvillage.end_date %></td>
+        <td><%= donorvillage.amount_for_village %></td>
+        <td><%= donorvillage.status %></td>
+        <td><%= link_to 'Show', donorvillage %></td>
+        <td><%= link_to 'Edit', edit_donorvillage_path(donorvillage) %></td>
+        <td><%= link_to 'Destroy', donorvillage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Donorvillage', new_donorvillage_path %>

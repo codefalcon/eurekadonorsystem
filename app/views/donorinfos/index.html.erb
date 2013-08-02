@@ -1,0 +1,39 @@
+<h1>Listing donorinfos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Type</th>
+      <th>Amount donated</th>
+      <th>Amount used</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @donorinfos.each do |donorinfo| %>
+      <tr>
+        <td><%= donorinfo.user %></td>
+        <td><%= donorinfo.type %></td>
+        <td><%= donorinfo.amount_donated %></td>
+        <td><%= donorinfo.amount_used %></td>
+        <td><%= donorinfo.start_date %></td>
+        <td><%= donorinfo.end_date %></td>
+        <td><%= donorinfo.status %></td>
+        <td><%= link_to 'Show', donorinfo %></td>
+        <td><%= link_to 'Edit', edit_donorinfo_path(donorinfo) %></td>
+        <td><%= link_to 'Destroy', donorinfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Donorinfo', new_donorinfo_path %>
