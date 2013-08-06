@@ -1,4 +1,5 @@
 class VillagesummaryreportsController < ApplicationController
+  before_filter :login_required
   before_action :set_villagesummaryreport, only: [:show, :edit, :update, :destroy]
 
   # GET /villagesummaryreports

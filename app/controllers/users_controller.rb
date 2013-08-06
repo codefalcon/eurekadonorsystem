@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class UsersController < ApplicationController
+  before_filter :login_required
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :load_arrays
   include ApplicationHelper
@@ -83,16 +84,11 @@ class UsersController < ApplicationController
   def destroy
     @user.status = Status::Inactive
 
-    @user.end_date = Date.today
+    @user.save
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+        format.html { redirect_to users_url }
+        format.json { head :no_content } 
     end
   end
   
@@ -109,7 +105,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email_address, :phone_number, :gender, :user_id, :login, :password, :password_confirmation, :role, :start_date, :end_date)
+      params.require(:user).permit(:first_name, :last_name, :email_address, :phone_number, :gender, :user_id, :login, :password, :password_confirmation, :role)
     end
 end
 

@@ -1,4 +1,5 @@
 class BlocksController < ApplicationController
+  before_filter :login_required
   before_action :set_block, only: [:show, :edit, :update, :destroy]
 
   # GET /blocks
