@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130731150940) do
+ActiveRecord::Schema.define(version: 20130806050025) do
 
   create_table "blocks", force: true do |t|
     t.string   "name"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20130731150940) do
     t.integer  "district_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "block_id"
+    t.string   "block_code"
   end
 
   add_index "blocks", ["district_id"], name: "index_blocks_on_district_id", using: :btree
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20130731150940) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "district_id"
+    t.string   "district_code"
   end
 
   create_table "donorinfos", force: true do |t|
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20130731150940) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "num_of_donor_visits"
   end
 
   add_index "donorvillages", ["user_id"], name: "index_donorvillages_on_user_id", using: :btree
@@ -111,7 +112,7 @@ ActiveRecord::Schema.define(version: 20130731150940) do
     t.integer  "block_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "village_id"
+    t.string   "village_code"
   end
 
   add_index "villages", ["block_id"], name: "index_villages_on_block_id", using: :btree
