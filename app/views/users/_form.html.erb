@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
@@ -29,7 +28,7 @@
   </div>
   <div class="field">
     <%= f.label :gender %><br>
-    <%= f.number_field :gender %>
+    <%= f.select :gender, options_for_select(@genders, :gender) %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
@@ -39,17 +38,17 @@
     <%= f.label :login %><br>
     <%= f.text_field :login %>
   </div>
+   <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
   <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
     <%= f.label :role %><br>
-    <%= f.number_field :role %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
+    <%= f.select :role, options_for_select(@roles, :role), :prompt => "Select a role" %>
   </div>
   <div class="actions">
     <%= f.submit %>

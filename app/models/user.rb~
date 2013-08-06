@@ -14,9 +14,8 @@ class User < ActiveRecord::Base
   validates :email_address, :uniqueness => true
   include ApplicationHelper 
 
-
-  def self.RoleName(role)
-	rl = Role.Roles().select { |k, v| v == role }
+  def Role
+	rl = Role.Roles().select { |k, v| v == self.role }
 	
 	if rl.nil? 
 		return nil 
@@ -25,8 +24,8 @@ class User < ActiveRecord::Base
 	end
   end
 
-  def self.StatusName(status)
-	st = Status.Statuses().select { |k,v| v == status }
+  def Status
+	st = Status.Statuses().select { |k,v| v == self.status }
 	
 	if st.nil? 
 	     return nil 
@@ -35,8 +34,8 @@ class User < ActiveRecord::Base
 	end
   end
 
-  def self.GenderName(gender)
-	g = Gender.Genders().select { |k,v| v == gender }
+  def Gender
+	g = Sex.Genders().select { |k,v| v == self.gender }
 	
 	if g.nil? 
 	     return nil 
