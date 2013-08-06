@@ -14,8 +14,8 @@ development:
   host: 127.0.0.1
   database: Donorsystem_development
   pool: 5
-  username: development
-  password: development
+  username: dev
+  password: 
   socket: /var/run/mysql/mysql.sock
 
 # Warning: The database defined as "test" will be erased and

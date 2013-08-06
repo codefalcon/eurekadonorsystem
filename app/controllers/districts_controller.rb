@@ -1,4 +1,5 @@
 class DistrictsController < ApplicationController
+  before_filter :login_required
   before_action :set_district, only: [:show, :edit, :update, :destroy]
 
   # GET /districts

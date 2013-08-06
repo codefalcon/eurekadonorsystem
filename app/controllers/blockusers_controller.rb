@@ -1,4 +1,5 @@
 class BlockusersController < ApplicationController
+  before_filter :login_required
   before_action :set_blockuser, only: [:show, :edit, :update, :destroy]
 
   # GET /blockusers

@@ -1,4 +1,5 @@
 class DonorvillagesController < ApplicationController
+  before_filter :login_required
   before_action :set_donorvillage, only: [:show, :edit, :update, :destroy]
 
   # GET /donorvillages
