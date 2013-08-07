@@ -1,0 +1,21 @@
+function refresh_page()
+{
+	window.location = window.location.href;
+}
+
+
+function close_modal()
+{
+	$('#modal-container').hide();
+	$('#modal').hide(); 
+	return false;
+}
+
+
+function show_modal()
+{
+	$('#modal-container').show();
+	$('#modal').show(); 
+	$('#modal').dialog({ modal:true, width:'auto'}).css({position:"relative"});
+}
+
