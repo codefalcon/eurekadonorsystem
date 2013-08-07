@@ -1,4 +1,5 @@
 class VillagesController < ApplicationController
+  before_filter :login_required
   before_action :set_village, only: [:show, :edit, :update, :destroy]
 
   # GET /villages

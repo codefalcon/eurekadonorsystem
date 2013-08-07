@@ -1,4 +1,5 @@
 class DonorinfosController < ApplicationController
+  before_filter :login_required
   before_action :set_donorinfo, only: [:show, :edit, :update, :destroy]
 
   # GET /donorinfos
