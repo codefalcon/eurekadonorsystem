@@ -1,11 +1,18 @@
 <h1>Listing blocks</h1>
 
+<p>Filters</p>
+<form action="<%= blocks_path(:district_id => nil)%>", method="get">
+     <%= select_tag :district_id, options_from_collection_for_select(@districts, :id, :name, @district_id), :include_blank => "All Districts", :onchange => 'submit()'  %>
+</form>
+
 <table>
   <thead>
     <tr>
+      <th>Code</th>	      
       <th>Name</th>
-      <th>Status</th>
       <th>District</th>
+      <th>Project Manager</th>
+      <th>Project Director</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,9 +22,21 @@
   <tbody>
     <% @blocks.each do |block| %>
       <tr>
+        <td><%= block.block_code %></td>
         <td><%= block.name %></td>
-        <td><%= block.status %></td>
-        <td><%= block.district %></td>
+        <td><%= block.district.name %></td>
+	<td>
+	<% if (!block.manager.nil?) %>
+		<%= block.manager.user.name %><br />
+	    <%= block.manager.start_date %> - <%= block.manager.end_date %>
+	<% end %>
+	</td>
+	<td>
+	<% if (!block.director.nil?) %>
+	    <%= block.director.user.name %><br />
+	    <%= block.director.start_date %> - <%= block.director.end_date %>
+	<% end %>
+	</td>	
         <td><%= link_to 'Show', block %></td>
         <td><%= link_to 'Edit', edit_block_path(block) %></td>
         <td><%= link_to 'Destroy', block, method: :delete, data: { confirm: 'Are you sure?' } %></td>

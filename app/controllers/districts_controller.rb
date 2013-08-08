@@ -12,6 +12,7 @@ class DistrictsController < ApplicationController
   # GET /districts/1
   # GET /districts/1.json
   def show
+     @blocks = Block.find_all_by_district_id_and_status(params[:id], Status::Active)
   end
 
   # GET /districts/new
