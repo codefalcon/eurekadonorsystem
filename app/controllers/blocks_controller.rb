@@ -5,7 +5,15 @@ class BlocksController < ApplicationController
   # GET /blocks
   # GET /blocks.json
   def index
-    @blocks = Block.all
+    @district_id = params[:district_id] 
+
+    @districts = District.all
+
+    if(@district_id.blank?)
+	@blocks = Block.all
+    else 
+	@blocks = Block.find_all_by_district_id(@district_id)
+    end 
   end
 
   # GET /blocks/1
@@ -70,6 +78,8 @@ class BlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:name, :status, :district_id)
+      if(params[:block].present?)
+	 params.require(:block).permit(:name, :status, :district_id)
+      end
     end
 end

@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+config.action_view.javascript_expansions[:defaults] = %w( jquery rails )
