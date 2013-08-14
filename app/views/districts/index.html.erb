@@ -1,11 +1,10 @@
-<h1>Listing districts</h1>
-
+<h1>Districts</h1>
+<%= link_to 'Add District', new_district_path, :remote => true %>
 <table>
   <thead>
     <tr>
+      <th>Code</th>
       <th>Name</th>
-      <th>Status</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -14,10 +13,9 @@
   <tbody>
     <% @districts.each do |district| %>
       <tr>
-        <td><%= district.name %></td>
-        <td><%= district.status %></td>
-        <td><%= link_to 'Show', district %></td>
-        <td><%= link_to 'Edit', edit_district_path(district) %></td>
+        <td><%= district.district_code %></td>
+        <td><%= link_to district.name, district %></td>
+        <td><%= link_to 'Edit', edit_district_path(district), :remote => true %></td>
         <td><%= link_to 'Destroy', district, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New District', new_district_path %>
+
