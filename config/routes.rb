@@ -13,11 +13,15 @@ Donorsystem::Application.routes.draw do
 
   resources :villageusers
 
-  resources :blockusers
+  resources :blockusers do
+     resources :villageusers
+  end 
 
   resources :villages
 
-  resources :blocks
+  resources :blocks do
+	resources :blockusers
+  end
 
   post "login/signin"
 

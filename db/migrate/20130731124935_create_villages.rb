@@ -4,6 +4,7 @@ class CreateVillages < ActiveRecord::Migration
       t.string :name
       t.integer :status
       t.references :block, index: true
+      t.string :village_code  
 
       t.timestamps
     end
