@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20130806050025) do
     t.integer  "district_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "block_id"
     t.string   "block_code"
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20130806050025) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "district_id"
     t.string   "district_code"
   end
 
@@ -65,7 +67,7 @@ ActiveRecord::Schema.define(version: 20130806050025) do
     t.integer  "user_id"
     t.date     "start_date"
     t.date     "end_date"
-    t.decimal  "amount_for_village", precision: 12, scale: 2
+    t.decimal  "amount_for_village",  precision: 12, scale: 2
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 20130806050025) do
     t.integer  "block_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "village_id"
     t.string   "village_code"
   end
 
