@@ -8,12 +8,11 @@
 <table>
   <thead>
     <tr>
-      <th>Code</th>	      
-      <th>Name</th>
-      <th>District</th>
+      <th><%= sortable "block_code"%></th>
+      <th><%= sortable "name"%></th>
+      <th><%= sortable "district_id"%></th>
       <th>Project Manager</th>
       <th>Project Director</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -23,7 +22,7 @@
     <% @blocks.each do |block| %>
       <tr>
         <td><%= block.block_code %></td>
-        <td><%= block.name %></td>
+        <td><%= link_to block.name, block %></td>
         <td><%= block.district.name %></td>
 	<td>
 	<% if (!block.manager.nil?) %>
@@ -37,7 +36,6 @@
 	    <%= block.director.start_date %> - <%= block.director.end_date %>
 	<% end %>
 	</td>	
-        <td><%= link_to 'Show', block %></td>
         <td><%= link_to 'Edit', edit_block_path(block) %></td>
         <td><%= link_to 'Destroy', block, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

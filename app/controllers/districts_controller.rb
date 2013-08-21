@@ -1,12 +1,13 @@
 class DistrictsController < ApplicationController
   before_filter :login_required
   before_action :set_district, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
   include ApplicationHelper
 
   # GET /districts
   # GET /districts.json
   def index
-    @districts = District.find_all_by_status(Status::Active)
+    @districts = District.find_all_by_status(Status::Active, :order => sort_column + ' ' + sort_direction)
   end
 
   # GET /districts/1
@@ -85,4 +86,12 @@ class DistrictsController < ApplicationController
     def district_params
       params.require(:district).permit(:name, :district_code)
     end
+
+   def sort_column
+    District.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end

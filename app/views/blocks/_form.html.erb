@@ -12,17 +12,46 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :block_code %><br>
+    <%= f.text_field :block_code %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
-  </div>
-  <div class="field">
     <%= f.label :district_id %><br>
-    <%= f.text_field :district_id %>
+    <%= f.collection_select :district_id, @districts, :id, :name, :prompt => "Select a district" %>
   </div>
+
+  <%= f.fields_for :manager, @block.manager do |mgr| %>
+	  <div class="field">
+	    <%= mgr.label 'Project Manager' %><br>
+	    <%= mgr.collection_select :user_id, @managers, :id, :name, :prompt => "Select a project manager" %> <br /><br />
+	    <%= mgr.date_field :start_date %> - <%= mgr.date_field :end_date %>
+	  </div>
+  <% end %>
+
+  <%= f.fields_for :director, @block.director do |mgr| %>
+	  <div class="field">
+	    <%= mgr.label 'Project Director' %><br>
+	    <%= mgr.collection_select :user_id, @directors, :id, :name, :prompt => "Select a project director" %> <br /><br />
+	    <%= mgr.date_field :start_date %> - <%= mgr.date_field :end_date %>
+	  </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Block Trainers' %><br>
+    <%= select_tag "trainer", options_from_collection_for_select(@trainers, "id", "name"), :prompt => "Select a block trainer" %> <br />
+    <%= f.label 'Start Date' %> - <%= f.label 'End Date' %><br />
+    <%= date_field_tag "start_date"  %> - <%= date_field_tag "End Date" %>
+  </div>
+  <% @block.trainers.each do |t| %>
+	<%= f.fields_for :trainers, t do |tr| %>	         
+		<%= tr.label t.user.name %> <br />
+		<%= tr.label t.start_date %> - <%= tr.label t.end_date %>
+          <% end %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

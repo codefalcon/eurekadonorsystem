@@ -1,19 +1,64 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Code:</strong>
+  <%= @block.block_code %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @block.name %>
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @block.status %>
+  <strong>District:</strong>
+  <%= @block.district.name %>
 </p>
 
 <p>
-  <strong>District:</strong>
-  <%= @block.district %>
+ <strong>Project Manager:</strong>
+ <% if (!@block.manager.nil?) %>
+	<%= @block.manager.user.name %><br />
+	<%= @block.manager.start_date %> - <%= @block.manager.end_date %>
+ <% end %>
 </p>
+
+<p>
+ <strong>Project Director:</strong>
+ <% if (!@block.director.nil?) %>
+	<%= @block.director.user.name %><br />
+	<%= @block.director.start_date %> - <%= @block.director.end_date %>
+ <% end %>
+</p>
+
+<% if (!@block.trainers.nil?) %>
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>      
+      <th>Block Trainer</th>      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @block.trainers.each do |trainer| %>
+         <% if (!trainer.villageusers.nil?) %>
+	      <% trainer.villageusers.each do |vu| %>
+	      <tr>
+		<td><%= vu.village.village_code %></td>	
+		<td><%= link_to vu.village.name, vu.village %></td>
+		<td><%= vu.user.name %>
+		    <br />
+		    <%= vu.start_date %> - <%= vu.end_date %>
+		</td>
+	      </tr>
+	    <% end %>
+	<% end %>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
 
 <%= link_to 'Edit', edit_block_path(@block) %> |
 <%= link_to 'Back', blocks_path %>
