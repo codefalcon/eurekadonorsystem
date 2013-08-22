@@ -53,11 +53,13 @@ class BlocksController < ApplicationController
 
     respond_to do |format|
       if @block.save!
-        format.html { redirect_to @block, notice: 'Block was successfully created.' }
+        format.html { redirect_to blocks_path, notice: 'Block was successfully created.' }
+	format.js { render :js => "close_modal();refresh_page();" }
         format.json { render action: 'show', status: :created, location: @block }
       else
         format.html { render action: 'new' }
         format.json { render json: @block.errors, status: :unprocessable_entity }
+ 	format.js
       end
     end
   end

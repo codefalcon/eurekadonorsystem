@@ -1,0 +1,7 @@
+<div class="span6 text-right pull-right userDetails">
+      <% if (!controller.current_user.nil?) %>
+	<div><%= controller.current_user.name %></div>
+	<div><%= link_to "Sign out", controller: "login", action: "signout" %></div>
+     <% end %>
+</div>
+

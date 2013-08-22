@@ -1,0 +1,4 @@
+<%- if @block.errors.any? %>
+  $('#modal-body').html("<%= j(render :template => 'blocks/new.html.erb') %>");
+<%- end %>
+
