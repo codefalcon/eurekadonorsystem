@@ -19,6 +19,7 @@ th{ text-align:left}
 .table{ border:1px solid #ccc; border-top:0px}
 .table td,.table th{border-right:1px solid #ccc; border-bottom:1px solid #ccc}
 .table th{ color:#fff; background:#666 !important}
+.table th a { color:#fff}
 h2{ font-size:1.8em; font-weight:normal; margin:0; padding:10px 0}
 
 /* Left Navs */
@@ -32,7 +33,7 @@ h2{ font-size:1.8em; font-weight:normal; margin:0; padding:10px 0}
 
 
 /* Grid Filter Options */
-.filterOptions{ background:#ffe599; padding:5px 10px; overflow:auto; border:1px solid #ccc; border-bottom:0}
+.filterOptions{ background:#ffe599; padding:5px 10px; overflow:auto; border:1px solid #ccc; border-bottom:0; border-top:0}
 .filterOptions select{ width:auto; min-width:100px}
 .filterOptions label{ display:inline-block}
 
@@ -51,6 +52,17 @@ label{ font-weight:bold}
 .mt15{ margin-top:15px}
 .mt20{ margin-top:20px}
 .mt30{ margin-top:30px}
+.mb0{ margin-bottom:0px}
+.mb5{ margin-bottom:5px}
+.mb10{ margin-bottom:10px}
+.mb15{ margin-bottom:15px}
+.mb20{ margin-bottom:20px}
+.mb30{ margin-bottom:30px}
+.mr0{ margin-right:0px}
+.mr5{ margin-right:5px}
+.mr10{ margin-right:10px}
+.mr15{ margin-right:15px}
+.mr20{ margin-right:20px}
 .p0{ padding:0}
 .p5{ padding:5px}
 .p10{ padding:10px}
@@ -60,6 +72,11 @@ label{ font-weight:bold}
 .pt10{ padding-top:10px}
 .pt15{ padding-top:15px}
 .pt20{ padding-top:20px}
+.pb0{ padding-bottom:0}
+.pb5{ padding-bottom:5px}
+.pb10{ padding-bottom:10px}
+.pb15{ padding-bottom:15px}
+.pb20{ padding-bottom:20px}
 .pl0{ padding-left:0}
 .pl5{ padding-left:5px}
 .pl10{ padding-left:10px}
@@ -73,9 +90,15 @@ label{ font-weight:bold}
 
 .bdr{ border:1px solid #ccc}
 .bdrL{ border-left:1px solid #ccc}
+.bdrR{ border-right:1px solid #ccc}
+.bdrB{ border-bottom:1px solid #ccc}
+.bdrT{ border-top:1px solid #ccc}
+.clear{ clear:both}
 
 .w100per{ width:100%}
 .w80per{ width:80%}
+.w50per{ width:50%}
+.w60per{ width:60%}
 .w70per{ width:70%}
 .w90per{ width:90%}
 .w100{ width:100px}
@@ -89,16 +112,16 @@ label{ font-weight:bold}
 .w225{ width:225px}
 .w250{ width:250px}
 
-.btnGray,.btnGray:hover{ background:#ccc; color:#333; font-weight:bold; font-size:15px}
-.btnGreen,.btnGreen:hover{ background:#6aa84f; color:#fff; font-weight:bold; font-size:15px}
+.btnGray,.btnGray:hover{ background:#ccc; color:#333; font-weight:bold; font-size:15px; padding:5px 10px; margin-left:10px}
+.btnGreen,.btnGreen:hover{ background:#6aa84f; color:#fff; font-weight:bold; font-size:15px; padding:5px 10px; margin-left:10px}
 
 .noData{ line-height:110px; text-align:center; background:#ccc; color:#666; font-weight:bold}
 
-textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{ padding:2px 4px; margin-bottom:0; height:auto}
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{ padding:4px 4px; margin-bottom:0; height:auto}
 
 /* Icons */
 .icon_edit,.icon_delete,.icon_add,.icon_back,.icon_tick,.icon_calendar,.icon_district,.icon_block,.icon_village,.icon_users,.icon_donors,.icon_partners,.icon_importExport{ width:16px; height:16px; margin-right:2px; background:#ccc; vertical-align:middle}
-.icon_edit,.icon_delete,icon_add,.icon_back,.icon_add,.icon_calendar,.icon_tick{ background:url(../images/sprite-16x16.png) no-repeat -9999px -9999px transparent}
+.icon_edit,.icon_delete,icon_add,.icon_back,.icon_add,.icon_calendar,.icon_tick{ background:url(/images/sprite-16x16.png) no-repeat -9999px -9999px transparent}
 .icon_edit{ background-position:0 0}
 .icon_delete{ background-position:0 -32px}
 .icon_add{ background-position:0 -16px}
@@ -114,8 +137,9 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .formFields{ list-style:none; margin:20px 0 0; padding:0}
 .formFields li{ list-style:none; margin:0; padding:0 0 10px; clear:both}
 .formFields li label{ width:200px; float:left; font-weight:bold}
-.forms{ width:100%; overflow:auto}
-.forms li{ list-style:none; margin:0; padding:0 0 10px; clear:both}
+.addedItems{ margin-left:200px}
+.forms{ width:100%; overflow:hidden}
+.forms li{ list-style:none; margin:0; padding:0 0 10px; clear:both; overflow:hidden}
 
 /* popup-content */
 
@@ -129,3 +153,12 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 .closeBtn{ float:right; margin:10px}
 .closeBtn a{ color:#333; font-weight:bold; font-size:15px}
+
+
+.wizardSteps{ float:right; list-style:none; margin:0px 0 0 10px; padding:0}
+.wizardSteps li{ float:left; list-style:none; margin:9px 0 0 -1px; padding:0}
+.wizardSteps li a{ padding:5px 10px; border:1px solid #ccc; border-bottom:0; display:block; background:#ddd; color:#666}
+.wizardSteps li a.active{ background:#fff; padding:5px 10px 6px 10px}
+
+.trainersData{ margin:30px 0 0; border:1px solid  #ccc; max-height:120px; overflow-y:auto; overflow-x:hidden}
+.trainersData li{ padding:5px 10px; border-bottom:1px solid #ccc}

@@ -1,7 +1,25 @@
-<% if (controller.action_name == "index") %>
-<div id="modal-container"></div>
-<div id="modal">
-  <a href="#" class="close">x</a>
-  <div id="modal-body"></div>
+
+<% 
+   @pathToReturn = request.fullpath
+%>
+
+<div class="popupHolder" id = "modal">
+    <header class="popup-header row-fluid">
+      <div class="closeBtn"><a href="<%= @pathToReturn %>">X</a></div>
+      <div class="span6">
+        <p class="popup-backlinks">&nbsp;</p>
+        <h2 class="popup-title"></h2>
+      </div>
+    </header>
+    <section  id="modal-body" class="popup-content">
+    </section>
+    <footer class="popup-footer">
+	<%= link_to @pathToReturn , :class=>"btnGray" do %>
+	   <%= image_tag('/images/spacer.gif', :class =>"icon_delete") %> Cancel
+	<% end %> 
+	<%= link_to :class=>"btnGreen", :onclick=> "$('form').submit()" do %>
+	   <%= image_tag('/images/spacer.gif', :class =>"icon_tick") %> Done
+	<% end %>
+     </footer>
 </div>
-<% end %>
+
