@@ -10,16 +10,17 @@
       </ul>
     </div>
   <% end %>
- <div class="field">
-    <%= f.label :district_code, 'Code' %><br>
+
+<ul class="formFields">
+  <li>
+    <%= f.label :district_code, 'District Code' %>
     <%= f.text_field :district_code %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div> 
-  <div class="actions">
-    <%= link_to 'Cancel', districts_path %>
-    <%= f.submit 'Done' %>
-  </div>
+   </li>
+  <li>
+    <%= f.label :name, 'District Name' %>
+    <%= f.text_field :name, :class => "w70per" %>
+  </li>
+</ul>
+
+  
 <% end %>
