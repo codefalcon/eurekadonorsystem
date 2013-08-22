@@ -1,0 +1,131 @@
+@charset "utf-8";
+/* CSS Document */
+body,input,select{ font-family:Arial, Helvetica, sans-serif; font-size:12px}
+a:hover{ text-decoration:none}
+.container{ width:98%}
+
+.header{ border-bottom:1px solid #ccc; padding:0 0 10px}
+.userDetails{ margin-top:10px}
+
+/* Search Bar */
+.input-append{ display:inline-block}
+#custom-search-form {margin:0; margin-top: 5px;padding: 0;} 
+#custom-search-form .search-query { padding-right: 25px; padding-right: 4px \9; padding-left: 3px; padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */ margin-bottom: 0;  -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; max-width:120px}
+#custom-search-form button {border: 0; background: none;/** belows styles are working good */ padding: 2px 5px; margin-top: 2px; position: relative; margin-left: -25px; /* IE7-8 doesn't have border-radius, so don't indent the padding */margin-bottom: 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0 0 0; }
+.search-query:focus + button {z-index: 3;}
+/* Search Bar Close */
+
+th{ text-align:left}
+.table{ border:1px solid #ccc; border-top:0px}
+.table td,.table th{border-right:1px solid #ccc; border-bottom:1px solid #ccc}
+.table th{ color:#fff; background:#666 !important}
+h2{ font-size:1.8em; font-weight:normal; margin:0; padding:10px 0}
+
+/* Left Navs */
+
+.leftNavs ul, .leftNavs li{ list-style:none; margin:0; padding:0}
+.leftNavs h2{ border-bottom:1px solid #ccc}
+.leftNavs ul{ padding:10px 0}
+.leftNavs ul li a{ padding:5px; display:block; color:#666}
+.leftNavs ul li a:hover{ text-decoration:none}
+.leftNavs ul li a.active{ background:#9fc5f8; color:#000}
+
+
+/* Grid Filter Options */
+.filterOptions{ background:#ffe599; padding:5px 10px; overflow:auto; border:1px solid #ccc; border-bottom:0}
+.filterOptions select{ width:auto; min-width:100px}
+.filterOptions label{ display:inline-block}
+
+/* Common Styles */
+
+.nobullet,.nobullet li{ list-style:none; padding:0; margin:0}
+
+label{ font-weight:bold}
+.m0{ margin:0}
+.m5{ margin:5px}
+.m10{ margin:10px}
+.m15{ margin:15px}
+.mt0{ margin-top:0px}
+.mt5{ margin-top:5px}
+.mt10{ margin-top:10px}
+.mt15{ margin-top:15px}
+.mt20{ margin-top:20px}
+.mt30{ margin-top:30px}
+.p0{ padding:0}
+.p5{ padding:5px}
+.p10{ padding:10px}
+.p15{ padding:15px}
+.pt0{ padding-top:0}
+.pt5{ padding-top:5px}
+.pt10{ padding-top:10px}
+.pt15{ padding-top:15px}
+.pt20{ padding-top:20px}
+.pl0{ padding-left:0}
+.pl5{ padding-left:5px}
+.pl10{ padding-left:10px}
+.pl15{ padding-left:15px}
+.pl20{ padding-left:20px}
+.pr0{ padding-right:0}
+.pr5{ padding-right:5px}
+.pr10{ padding-right:10px}
+.pr15{ padding-right:15px}
+.pr20{ padding-right:20px}
+
+.bdr{ border:1px solid #ccc}
+.bdrL{ border-left:1px solid #ccc}
+
+.w100per{ width:100%}
+.w80per{ width:80%}
+.w70per{ width:70%}
+.w90per{ width:90%}
+.w100{ width:100px}
+.w110{ width:110px}
+.w120{ width:120px}
+.w130{ width:130px}
+.w140{ width:140px}
+.w150{ width:150px}
+.w175{ width:175px}
+.w200{ width:200px}
+.w225{ width:225px}
+.w250{ width:250px}
+
+.btnGray,.btnGray:hover{ background:#ccc; color:#333; font-weight:bold; font-size:15px}
+.btnGreen,.btnGreen:hover{ background:#6aa84f; color:#fff; font-weight:bold; font-size:15px}
+
+.noData{ line-height:110px; text-align:center; background:#ccc; color:#666; font-weight:bold}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{ padding:2px 4px; margin-bottom:0; height:auto}
+
+/* Icons */
+.icon_edit,.icon_delete,.icon_add,.icon_back,.icon_tick,.icon_calendar,.icon_district,.icon_block,.icon_village,.icon_users,.icon_donors,.icon_partners,.icon_importExport{ width:16px; height:16px; margin-right:2px; background:#ccc; vertical-align:middle}
+.icon_edit,.icon_delete,icon_add,.icon_back,.icon_add,.icon_calendar,.icon_tick{ background:url(../images/sprite-16x16.png) no-repeat -9999px -9999px transparent}
+.icon_edit{ background-position:0 0}
+.icon_delete{ background-position:0 -32px}
+.icon_add{ background-position:0 -16px}
+.icon_back{ background-position:0 -48px}
+.icon_calendar{ background-position:0 -64px}
+.icon_tick{ background-position:0 -80px}
+
+.sectionHeader{ height:60px; border-bottom:1px solid #ccc}
+.sectionHeader h2{ margin:0; padding:0; line-height:normal}
+.sectionHeader-actions a{ background:#ccc; display:inline-block; margin-left:5px; line-height:16px; padding:5px 10px 5px 5px; color:#333; line-height:16px}
+.backlinks{ margin:5px 0 0; padding:0}
+
+.formFields{ list-style:none; margin:20px 0 0; padding:0}
+.formFields li{ list-style:none; margin:0; padding:0 0 10px; clear:both}
+.formFields li label{ width:200px; float:left; font-weight:bold}
+.forms{ width:100%; overflow:auto}
+.forms li{ list-style:none; margin:0; padding:0 0 10px; clear:both}
+
+/* popup-content */
+
+.popupHolder{ border:1px solid #ccc}
+.popup-header{ height:60px; border-bottom:1px solid #ccc; background:#eee}
+.popup-content{ padding:10px}
+.popup-footer{ border-top:1px solid #ccc; background:#f5f5f5; text-align:right; padding:10px }
+.popup-footer a{ display:inline-block; margin-left:10px; padding:5px 10px}
+.popup-backlinks{ margin:5px 0 0; padding:0}
+.popup-title{ margin:0; padding:0; line-height:normal}
+
+.closeBtn{ float:right; margin:10px}
+.closeBtn a{ color:#333; font-weight:bold; font-size:15px}

@@ -1,0 +1,34 @@
+<% if (controller.action_name == "index") %>
+<aside class="span3 leftNavs">
+<% if (controller.current_user.role == 1) %>
+  <h2>Manage</h2>
+  <ul>
+  	<li>
+		<%= link_to districts_path do %>
+		  <%= image_tag('/images/spacer.gif', :class => "icon_district") %> District
+		<% end %>				
+	</li>
+	<li>
+		<%= link_to blocks_path do %>
+		  <%= image_tag('/images/spacer.gif', :class => "icon_block") %> Block
+		<% end %>
+	</li>
+	<li>
+		<%= link_to villages_path do %>
+		  <%= image_tag('/images/spacer.gif', :class => "icon_village") %> Village
+		<% end %>
+	</li>
+	<li>
+		<%= link_to users_path do %>
+		  <%= image_tag('/images/spacer.gif', :class => "icon_users") %> User
+		<% end %>		
+	</li>
+	<li>
+		<%= link_to donorinfos_path do %>
+		  <%= image_tag('/images/spacer.gif', :class => "icon_donors") %> Donors
+		<% end %>		
+	</li>	
+</ul>
+<% end %>
+</aside>
+<% end %>
