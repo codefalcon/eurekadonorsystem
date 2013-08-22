@@ -40,7 +40,7 @@ class DistrictsController < ApplicationController
       else
         format.html { render action: 'new' }
         format.json { render json: @district.errors, status: :unprocessable_entity }
-	format.js
+	format.js 
       end
     end
   end
@@ -58,7 +58,7 @@ class DistrictsController < ApplicationController
       else
         format.html { render action: 'edit' }
         format.json { render json: @district.errors, status: :unprocessable_entity }
-	format.js
+	format.js 
       end
     end
   end
@@ -66,9 +66,9 @@ class DistrictsController < ApplicationController
   # DELETE /districts/1
   # DELETE /districts/1.json
   def destroy
-    @user.status = Status::Inactive
+    @district.status = Status::Inactive
 
-    @user.save
+    @district.save
 
     respond_to do |format|
       format.html { redirect_to districts_url }
