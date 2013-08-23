@@ -30,14 +30,19 @@ class VillagesController < ApplicationController
   def create
     @village = Village.new(village_params)
 
+    @village.status = Status::Active
+
     respond_to do |format|
       if @village.save
-        format.html { redirect_to @village, notice: 'Village was successfully created.' }
+        format.html { redirect_to villages_path, notice: 'Village was successfully created.' }
+        format.js { render :js => "close_modal();refresh_page();" }
         format.json { render action: 'show', status: :created, location: @village }
       else
         format.html { render action: 'new' }
         format.json { render json: @village.errors, status: :unprocessable_entity }
+        format.js
       end
+      
     end
   end
 
@@ -46,19 +51,24 @@ class VillagesController < ApplicationController
   def update
     respond_to do |format|
       if @village.update(village_params)
-        format.html { redirect_to @village, notice: 'Village was successfully updated.' }
-        format.json { head :no_content }
+	format.html { redirect_to villages_path, notice: 'Village was successfully updated.' }
+        format.js { render :js => "close_modal();refresh_page();" }
+        format.json { head :no_content }		
       else
         format.html { render action: 'edit' }
-        format.json { render json: @village.errors, status: :unprocessable_entity }
-      end
+        format.json { render json: @village.errors, status: :unprocessable_entity }        
+        format.js
+      end      
     end
   end
 
   # DELETE /villages/1
   # DELETE /villages/1.json
   def destroy
-    @village.destroy
+    @village.status = Status::Inactive
+
+    @village.save
+
     respond_to do |format|
       format.html { redirect_to villages_url }
       format.json { head :no_content }

@@ -1,0 +1,11 @@
+<%- if @village.errors.any? %>
+  $('#modal-body').html("<%= j(render :template => 'villages/edit.html.erb') %>");
+<%- else %>
+  close_modal();
+  refresh_page();
+<%- end %>
+
+
+
+
+

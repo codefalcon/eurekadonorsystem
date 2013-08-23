@@ -1,4 +1,4 @@
-<%= form_for(@village) do |f| %>
+<%= form_for @village, :remote => true, :validate => true do |f| %>
   <% if @village.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@village.errors.count, "error") %> prohibited this village from being saved:</h2>
@@ -11,19 +11,20 @@
     </div>
   <% end %>
 
- <div class="field">
-    <%= f.label :village_code %><br>
+
+<ul class="formFields">
+ <li>
+    <%= f.label :village_code %>
     <%= f.text_field :village_code %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
+  </li>
+  <li>
+    <%= f.label :name %>
     <%= f.text_field :name %>
-  </div> 
-  <div class="field">
-    <%= f.label :block_id %><br>
+  </li> 
+  <li>
+    <%= f.label :block_id %>
     <%= f.collection_select :block_id, @blocks, :id, :name, :prompt => "Select a block" %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </li>
+</ul>
+
 <% end %>

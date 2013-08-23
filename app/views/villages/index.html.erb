@@ -5,7 +5,7 @@
 		  <h2>Villages</h2>
 		</div>
 		<div class="span6 text-right mt20">
-	   	   <%= link_to new_village_path do %>
+	   	   <%= link_to new_village_path, :remote => true do %>
 		      <%= image_tag('/images/spacer.gif', :class => "icon_add") %> Add Village
 	  	   <% end %>
 		</div>
@@ -28,7 +28,7 @@
 			<td><%= link_to village.name, village %></td>	
 			<td><%= village.block.name %></td>
 			<td>	
-			<%= link_to image_tag('/images/spacer.gif', :class => "icon_edit"), edit_village_path(village) %>
+			<%= link_to image_tag('/images/spacer.gif', :class => "icon_edit"), edit_village_path(village), :remote => true %>
 			<%= link_to image_tag('/images/spacer.gif', :class => "icon_delete"), village, method: :delete, data: { confirm: 'Are you sure?' } %>
 			</td>
 		      </tr>
