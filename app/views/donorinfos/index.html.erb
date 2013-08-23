@@ -1,39 +1,50 @@
-<h1>Listing donorinfos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Type</th>
-      <th>Amount donated</th>
-      <th>Amount used</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @donorinfos.each do |donorinfo| %>
-      <tr>
-        <td><%= donorinfo.user %></td>
-        <td><%= donorinfo.type %></td>
-        <td><%= donorinfo.amount_donated %></td>
-        <td><%= donorinfo.amount_used %></td>
-        <td><%= donorinfo.start_date %></td>
-        <td><%= donorinfo.end_date %></td>
-        <td><%= donorinfo.status %></td>
-        <td><%= link_to 'Show', donorinfo %></td>
-        <td><%= link_to 'Edit', edit_donorinfo_path(donorinfo) %></td>
-        <td><%= link_to 'Destroy', donorinfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Donorinfo', new_donorinfo_path %>
+<section class="span9">
+	<header class="row-fluid sectionHeader">
+		<div class="span6">
+		  <p class="backlinks">&nbsp;</p>
+		  <h2>Donors</h2>
+		</div>
+		<div class="span6 text-right mt20">
+	   	   <%= link_to new_donorinfo_path do %>
+		      <%= image_tag('/images/spacer.gif', :class => "icon_add") %> Add Donor
+	  	   <% end %>
+		</div>
+	</header>
+	<div class="content">
+		<table class="table table-hover table-striped">
+		  <thead>
+		    <tr>
+		      <th>Code</th>
+		      <th>Name</th>
+		      <th>Email</th>
+		      <th>Type</th>
+		      <th>Funding Status</th>
+		      <th>Action</th>		     
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <% @donorinfos.each do |donorinfo| %>
+		      <tr>
+			<td><%= donorinfo.user.user_id %></td>
+			<td><%= link_to donorinfo.user.name, donorinfo %></td>
+	   		<td><%= donorinfo.user.email_address %></td>
+	   		<td><%= donorinfo.Type %></td>
+			<td>
+			    <% if (donorinfo.amountused == 0) %>
+				<font color="red">Not Allocated</font>
+			    <% elsif (donorinfo.amountdonated > donorinfo.amountused) %>
+				<font color="yellow">Partially Allocated</font>
+			    <% else %>
+				<font color="green">Fully Allocated</font>
+			    <% end %> 
+			</td>		
+			<td>	
+			<%= link_to image_tag('/images/spacer.gif', :class => "icon_edit"), edit_donorinfo_path(donorinfo) %>
+			<%= link_to image_tag('/images/spacer.gif', :class => "icon_delete"), donorinfo, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+</section>
