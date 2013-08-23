@@ -1,41 +1,47 @@
-<h1>Listing users</h1>
+<section class="span9">
+	<header class="row-fluid sectionHeader">
+		<div class="span6">
+		  <p class="backlinks">&nbsp;</p>
+		  <h2>Users</h2>
+		</div>
+		<div class="span6 text-right mt20">
+	   	   <%= link_to new_user_path  do %>
+		      <%= image_tag('/images/spacer.gif', :class => "icon_add") %> Add User
+	  	   <% end %>
+		</div>
+	</header>
+	<div class="content">
+		<table class="table table-hover table-striped">
+		  <thead>
+		    <tr>
+		      <th>Code</th>		
+		      <th>Name</th>
+		      <th>Email address</th>
+		      <th>Phone number</th>
+		      <th>Gender</th>
+		      <th>Login</th>      
+		      <th>Role</th>
+		      <th>Action</th>
+		    </tr>
+		  </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Email address</th>
-      <th>Phone number</th>
-      <th>Gender</th>
-      <th>User</th>
-      <th>Login</th>      
-      <th>Role</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email_address %></td>
-        <td><%= user.phone_number %></td>
-        <td><%= user.Gender %></td>
-        <td><%= user.user_id %></td>
-        <td><%= user.login %></td>
-        <td><%= user.Role %></td>        
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+		  <tbody>
+		    <% @users.each do |user| %>
+		      <tr>
+			<td><%= user.user_id %></td>
+			<td><%= link_to user.name, user %></td>	
+			<td><%= user.email_address %></td>
+			<td><%= user.phone_number %></td>
+			<td><%= user.Gender %></td>
+			<td><%= user.login %></td>
+			<td><%= user.Role %></td>        
+			<td>
+			<%= link_to image_tag('/images/spacer.gif', :class => "icon_edit"), edit_user_path(user) %>
+			<%= link_to image_tag('/images/spacer.gif', :class => "icon_delete"), user, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+</section>

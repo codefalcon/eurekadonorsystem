@@ -35,6 +35,16 @@ module ApplicationHelper
 
    end
 
+   class DonorType
+	NotApplicable = 0
+	Individual = 1
+	Corporate = 2
+
+	def self.DonorTypes
+  	    return [["Not Applicable", 0], ["Individual", 1], ["Corporate", 2]]
+	end 
+   end 
+
    def sortable(column, title = nil)
 	  title ||= column.titleize
 	  css_class = column == sort_column ? "current #{sort_direction}" : nil

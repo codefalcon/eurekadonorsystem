@@ -1,31 +1,40 @@
-<h1>Listing villages</h1>
+<section class="span9">
+	<header class="row-fluid sectionHeader">
+		<div class="span6">
+		  <p class="backlinks">&nbsp;</p>
+		  <h2>Villages</h2>
+		</div>
+		<div class="span6 text-right mt20">
+	   	   <%= link_to new_village_path do %>
+		      <%= image_tag('/images/spacer.gif', :class => "icon_add") %> Add Village
+	  	   <% end %>
+		</div>
+	</header>
+	<div class="content">
+		<table class="table table-hover table-striped">
+		  <thead>
+		    <tr>
+		      <th><%= sortable "village_code", "Code" %></th>
+		      <th><%= sortable "name"%></th>
+		      <th><%= sortable "block_id"%></th>
+		      <th>Action</th>
+		    </tr>
+		  </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Block</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+		  <tbody>
+		    <% @villages.each do |village| %>
+		      <tr>
+			<td><%= village.village_code %></td>	
+			<td><%= link_to village.name, village %></td>	
+			<td><%= village.block.name %></td>
+			<td>	
+			<%= link_to image_tag('/images/spacer.gif', :class => "icon_edit"), edit_village_path(village) %>
+			<%= link_to image_tag('/images/spacer.gif', :class => "icon_delete"), village, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+</section>
 
-  <tbody>
-    <% @villages.each do |village| %>
-      <tr>
-        <td><%= village.name %></td>
-        <td><%= village.status %></td>
-        <td><%= village.block %></td>
-        <td><%= link_to 'Show', village %></td>
-        <td><%= link_to 'Edit', edit_village_path(village) %></td>
-        <td><%= link_to 'Destroy', village, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Village', new_village_path %>
