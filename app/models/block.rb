@@ -6,8 +6,8 @@ class Block < ActiveRecord::Base
   has_one :manager, :class_name => 'Blockuser', :conditions => { :status => Status::Active , :role => Role::Project_Manager }
   accepts_nested_attributes_for :manager, :reject_if => lambda { |a| a[:user_id].nil? }
   has_one :director, :class_name => 'Blockuser', :conditions => { :status => Status::Active , :role => Role::Project_Director }
-  accepts_nested_attributes_for :manager, :reject_if => lambda { |a| a[:user_id].nil? }
+  accepts_nested_attributes_for :director, :reject_if => lambda { |a| a[:user_id].nil? }
   has_many :trainers, :class_name => 'Blockuser', :conditions => { :status => Status::Active , :role => Role::Block_Trainer }
-  accepts_nested_attributes_for :manager, :reject_if => lambda { |a| a[:user_id].nil? }
+  accepts_nested_attributes_for :trainers, :reject_if => lambda { |a| a[:user_id].nil? }
 
 end

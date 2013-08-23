@@ -1,11 +1,14 @@
 class VillagesController < ApplicationController
+  include ApplicationHelper
   before_filter :login_required
   before_action :set_village, only: [:show, :edit, :update, :destroy]
+  before_action :load_arrays
+  helper_method :sort_column, :sort_direction
 
   # GET /villages
   # GET /villages.json
   def index
-    @villages = Village.all
+    @villages = Village.find_all_by_status(Status::Active, :order => sort_column + ' ' + sort_direction)
   end
 
   # GET /villages/1
@@ -70,6 +73,19 @@ class VillagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def village_params
-      params.require(:village).permit(:name, :status, :block_id)
+      params.require(:village).permit(:name, :village_code, :block_id)
     end
+
+
+   def load_arrays
+      @blocks = Block.find_all_by_status(Status::Active)
+   end 
+    
+   def sort_column
+     Village.column_names.include?(params[:sort]) ? params[:sort] : "name"
+   end
+  
+   def sort_direction
+     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+   end
 end

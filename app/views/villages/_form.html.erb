@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
+ <div class="field">
+    <%= f.label :village_code %><br>
+    <%= f.text_field :village_code %>
+  </div>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </div>
+  </div> 
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :block %><br>
-    <%= f.text_field :block %>
+    <%= f.label :block_id %><br>
+    <%= f.collection_select :block_id, @blocks, :id, :name, :prompt => "Select a block" %>
   </div>
   <div class="actions">
     <%= f.submit %>
