@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, :remote => true, :validate => true do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,47 +10,49 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :first_name %><br>
+
+
+<ul class="formFields">
+  <li>
+    <%= f.label :first_name %>
     <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
+  </li>
+  <li>
+    <%= f.label :last_name %>
     <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email_address %><br>
+  </li>
+  <li>
+    <%= f.label :email_address %>
     <%= f.text_field :email_address %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
+  </li>
+  <li>
+    <%= f.label :phone_number %>
     <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
+  </li>
+  <li>
+    <%= f.label :gender %>
     <%= f.select :gender, options_for_select(@genders, :gender) %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
+  </li>
+  <li>
+    <%= f.label :user_id %>
     <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :login %><br>
+  </li>
+  <li>
+    <%= f.label :login %>
     <%= f.text_field :login %>
-  </div>
-   <div class="field">
-    <%= f.label :password %><br>
+  </li>
+   <li>
+    <%= f.label :password %>
     <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
+  </li>
+  <li>
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br>
+  </li>
+  <li>
+    <%= f.label :role %>
     <%= f.select :role, options_for_select(@roles, :role), :prompt => "Select a role" %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </li>
+</ul>
+
 <% end %>
