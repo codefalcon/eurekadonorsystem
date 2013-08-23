@@ -1,54 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+ <div class="row-fluid">
+    <section class="span12">
+      <header class="row-fluid sectionHeader">
+        <div class="span6">
+        <p class="backlinks">
+	  <%= link_to users_path do %>
+	   <%= image_tag('/images/spacer.gif', :class =>"icon_back") %> Users
+	  <% end %>
+	</p>        
+        <h2><%= @user.name %></h2>
+        </div>
+        <div class="span6 text-right mt20">
+          <div class="sectionHeader-actions">
+		<%= link_to edit_user_path(@user), :remote => true do%>
+		     <%= image_tag('/images/spacer.gif', :class =>"icon_edit") %> Edit
+	        <%end%>
+	  </div>
+        </div>
+      </header>
+      <div class="content">
+         <div class="span12">
+	     <ul class="formFields">
+		<li><label>User code</label> <%= @user.user_id %></li>
+		<li><label>Name</label> <%= @user.name %></li>
+	        <li><label>Email address</label> <%= @user.email_address %></li>
+	        <li><label>Phone number</label> <%= @user.phone_number %></li>
+	        <li><label>Gender</label> <%= @user.Gender %></li>
+	        <li><label>Login</label> <%= @user.login %></li>
+	        <li><label>Role</label> <%= @user.Role %></li>
+	     </ul>
+	  </div>
+      </div>
+    </section>
+  </div>
+</div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email address:</strong>
-  <%= @user.email_address %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @user.phone_number %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @user.user_id %>
-</p>
-
-<p>
-  <strong>Login:</strong>
-  <%= @user.login %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @user.status %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
