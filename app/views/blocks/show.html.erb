@@ -1,49 +1,57 @@
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @block.block_code %>
-</p>
+ <div class="row-fluid">
+    <section class="span12">
+      <header class="row-fluid sectionHeader">
+        <div class="span6">
+        <p class="backlinks">
+	  <%= link_to blocks_path do %>
+	   <%= image_tag('/images/spacer.gif', :class =>"icon_back") %> Blocks
+	  <% end %>
+	</p>        
+        <h2><%= @block.name %></h2>
+        </div>
+        <div class="span6 text-right mt20">
+          <div class="sectionHeader-actions">
+		<%= link_to edit_block_path(@block) , :remote => true do%>
+		     <%= image_tag('/images/spacer.gif', :class =>"icon_edit") %> Edit
+	        <%end%>
+	  </div>
+        </div>
+      </header>
+      <div class="content">
+      <div class="span12">
+     <ul class="formFields">
+	<li><label>Block Code</label> <%= @block.block_code  %></li>
+        <li><label>Block Name</label> <%= @block.name %></li>
+        <li><label>District Name</label> <%= @block.district.name %></li>
+	<li><label>Project Manager</label>
+            <div class="addedItems">
+		<% if (!@block.manager.nil?) %>
+		<%= @block.manager.user.name %><br><span class="muted">
+		<%= @block.manager.start_date %> - <%= @block.manager.end_date %></span>
+ 		<% end %>
+	    </div>
+	</li>
+	<li><label>Project Director</label>
+	    <div class="addedItems">
+		<% if (!@block.director.nil?) %>
+		<%= @block.director.user.name %><br><span class="muted">
+		<%= @block.director.start_date %> - <%= @block.director.end_date %></span>
+		<% end %>
+	    </div>
+ 	</li>
+     </ul>
 
-<p>
-  <strong>Name:</strong>
-  <%= @block.name %>
-</p>
-
-<p>
-  <strong>District:</strong>
-  <%= @block.district.name %>
-</p>
-
-<p>
- <strong>Project Manager:</strong>
- <% if (!@block.manager.nil?) %>
-	<%= @block.manager.user.name %><br />
-	<%= @block.manager.start_date %> - <%= @block.manager.end_date %>
- <% end %>
-</p>
-
-<p>
- <strong>Project Director:</strong>
- <% if (!@block.director.nil?) %>
-	<%= @block.director.user.name %><br />
-	<%= @block.director.start_date %> - <%= @block.director.end_date %>
- <% end %>
-</p>
-
-<% if (!@block.trainers.nil?) %>
-<table>
-  <thead>
-    <tr>
-      <th>Code</th>
-      <th>Name</th>      
-      <th>Block Trainer</th>      
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @block.trainers.each do |trainer| %>
-         <% if (!trainer.villageusers.nil?) %>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-hover table-striped">
+	 <tr>
+	      <th>Code</th>
+	      <th>Name</th>      
+	      <th>Block Trainer</th>      
+         </tr>
+          <% @block.trainers.each do |trainer| %>
+           <% if (!trainer.villageusers.nil?) %>
 	      <% trainer.villageusers.each do |vu| %>
 	      <tr>
 		<td><%= vu.village.village_code %></td>	
@@ -54,11 +62,13 @@
 		</td>
 	      </tr>
 	    <% end %>
-	<% end %>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
+	  <% end %>
+         <% end %>
+	 
+	</table>
+	</div>
+      </div>
+    </section>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_block_path(@block) %> |
-<%= link_to 'Back', blocks_path %>

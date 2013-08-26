@@ -10,36 +10,105 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :block_code %><br>
+ <ul class="formFields">
+  <li>
+    <%= f.label :block_code %>
     <%= f.text_field :block_code %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :district_id %><br>
-    <%= f.collection_select :district_id, @districts, :id, :name, :prompt => "Select a district" %>
-  </div>
+  </li>
+  <li>
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "w70per"%>
+  </li>
+  <li>
+    <%= f.label :district_id %>
+    <%= f.collection_select :district_id, @districts, :id, :name, {:prompt => "Select District"}, {:class => "w70per"} %>
+  </li>
+</ul>
+<div class="row-fluid mt20">
+  <div class="span6 pull-left pr10">
+    <ul class="nobullet forms">
+       	  <%= f.fields_for :manager, @block.manager do |mgr| %>
+	  <li>
+	    <%= mgr.label 'Project Manager' %>
+	    <%= mgr.collection_select :user_id, @managers, :id, :name, {:prompt => "Select project manager"}, {:class => "w100per"} %> 
+	  </li>
+	  <li>
+	      <div class="span6 pull-left">
+               	 <%= mgr.label 'Start Date' %>
+                 <div class="input-append date" id="PMstartDate" data-date="12-02-2012" data-date-format="dd-mm-yyyy">	
+		    <%= mgr.text_field :start_date , :class=> "w50per", :readonly => true%>
+		    <span class="add-on"><img src="img/spacer.gif" class="icon_calendar" /></span>
+		   </div>
+               </div>
+              <div class="span6">
+		 <%= mgr.label 'End Date' %>
+                 <div class="input-append date" id="PMendDate" data-date="12-02-2012" data-date-format="dd-mm-yyyy">	
+		    <%= mgr.text_field :end_date , :class=> "w50per", :readonly => true%>
+		    <span class="add-on"><img src="img/spacer.gif" class="icon_calendar" /></span>
+		   </div>
+             </div>
+	 </li>
+	  <% end %>
+    </ul>
 
-  <%= f.fields_for :manager, @block.manager do |mgr| %>
-	  <div class="field">
-	    <%= mgr.label 'Project Manager' %><br>
-	    <%= mgr.collection_select :user_id, @managers, :id, :name, :prompt => "Select a project manager" %> <br /><br />
-	    <%= mgr.date_field :start_date %> - <%= mgr.date_field :end_date %>
-	  </div>
-  <% end %>
+    <ul class="nobullet forms mt20">
+	  <%= f.fields_for :director, @block.director do |mgr| %>
+	  <li>
+	    <%= mgr.label 'Project Director' %>
+	    <%= mgr.collection_select :user_id, @directors, :id, :name, {:prompt => "Select a project director"}, {:class => "w100per"}  %> 
+	  </li>
+	  <li>	
+	    <div class="span6 pull-left">
+               	 <%= mgr.label 'Start Date' %>
+                 <div class="input-append date" id="PDstartDate" data-date="12-02-2012" data-date-format="dd-mm-yyyy">	
+		    <%= mgr.text_field :start_date , :class=> "w50per", :readonly => true%>
+		    <span class="add-on"><img src="img/spacer.gif" class="icon_calendar" /></span>
+		   </div>
+               </div>
+              <div class="span6">
+		 <%= mgr.label 'End Date' %>
+                 <div class="input-append date" id="PDendDate" data-date="12-02-2012" data-date-format="dd-mm-yyyy">	
+		    <%= mgr.text_field :end_date , :class=> "w50per", :readonly => true%>
+		    <span class="add-on"><img src="img/spacer.gif" class="icon_calendar" /></span>
+		   </div>
+             </div>
+	  </li>
+	  <% end %>
+     </ul>
+   </div>
 
-  <%= f.fields_for :director, @block.director do |mgr| %>
-	  <div class="field">
-	    <%= mgr.label 'Project Director' %><br>
-	    <%= mgr.collection_select :user_id, @directors, :id, :name, :prompt => "Select a project director" %> <br /><br />
-	    <%= mgr.date_field :start_date %> - <%= mgr.date_field :end_date %>
-	  </div>
-  <% end %>
+    <div class="span6 pull-right pl20 bdrL">
+        <ul class="nobullet forms">
+            <li>
+              <%= f.label 'Block Trainers' %>
+              <%= select_tag "trainer", options_from_collection_for_select(@trainers, "id", "name"), {:prompt => "Select block trainer"} %> 
+              <%= link_to image_tag('/images/spacer.gif', :class =>'icon_add')%>
+            </li>
+            <li>
+              <div class="span6">
+                <label> Start Date</label>
+                <input name="" type="text" class="w120"> <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a>
+              </div>
+              <div class="span6">
+                <label> End Date</label>
+                <input name="" type="text" class="w120"> <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a>
+              </div>
+            </li>
+        </ul>
+        <div class="mt30">
+	   <% @block.trainers.each do |t| %>
+		<%= f.fields_for :trainers, t do |tr| %>	         
+			<%= tr.label t.user.name %> <br />
+			<%= tr.label t.start_date %> - <%= tr.label t.end_date %>
+         	<% end %>
+	   <% end %>
+          <p class="noData">No Block Trainers Added</p>
+        </div>
+   </div>
 
+</div>   
+
+<!--
   <div class="field">
     <%= f.label 'Block Trainers' %><br>
     <%= select_tag "trainer", options_from_collection_for_select(@trainers, "id", "name"), :prompt => "Select a block trainer" %> <br />
@@ -51,8 +120,8 @@
 		<%= tr.label t.user.name %> <br />
 		<%= tr.label t.start_date %> - <%= tr.label t.end_date %>
           <% end %>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <% end %> -->
+
+<br/>
+<br/>
 <% end %>
