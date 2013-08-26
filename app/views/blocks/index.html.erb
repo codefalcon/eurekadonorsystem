@@ -1,48 +1,61 @@
-<h1>Listing blocks</h1>
+ <section class="span9">
+      <header class="row-fluid sectionHeader">
+        <div class="span6">
+        <p class="backlinks">&nbsp;</p>
+          <h2><img src="img/spacer.gif" class="icon_district" /> Blocks</h2>
+        </div>
+        <div class="span6 text-right mt20">
+	    <%= link_to new_block_path, :remote => true do%>
+		  <%= image_tag('/images/spacer.gif', :class =>"icon_add") %> Add Block
+            <%end%>
+        </div>
+      </header>
+      <div class="content">
+	<div class="filterOptions">
+	      <h5>Filters</h5>
+	      <ul class="row-fluid m0 p0">
+	      	<li class="span4"><label>District:</label> 
+		  <form action="<%= blocks_path(:district_id => nil)%>", method="get">
+    		     <%= select_tag :district_id, options_from_collection_for_select(@districts, :id, :name, @district_id), :include_blank => "All Districts", :onchange => 'submit()'  %>
+		  </form>
+		</li>
+	      </ul>
+	</div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-hover table-striped">
+          <tr>
+              <th scope="col"><%= sortable "block_code", "Code" %></th>
+     	      <th scope="col"><%= sortable "name"%></th>
+	      <th scope="col"><%= sortable "district_id"%></th>
+	      <th scope="col">Project Manager</th>
+	      <th scope="col">Project Director</th>
+              <th scope="col">Action</th>
+          </tr>
+	    <% @blocks.each do |block| %>
+	      <tr>
+		<td><%= block.block_code %></td>
+		<td><%= link_to block.name, block %></td>
+		<td><%= block.district.name %></td>
+		<td>
+		<% if (!block.manager.nil?) %>
+			<%= block.manager.user.name %><br />
+		    <%= block.manager.start_date %> - <%= block.manager.end_date %>
+		<% end %>
+		</td>
+		<td>
+		<% if (!block.director.nil?) %>
+		    <%= block.director.user.name %><br />
+		    <%= block.director.start_date %> - <%= block.director.end_date %>
+		<% end %>
+		</td>	
+		<td><%= link_to edit_block_path(block), :remote => true do%>
+			 <%= image_tag('/images/spacer.gif', :class =>"icon_edit") %> 
+		    <%end%>		
+		<%= link_to image_tag('/images/spacer.gif', :class =>'icon_delete') , block, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      </tr>
+    	    <% end %>
+		 
+        </table>
+      </div>
+    </section>
 
-<p>Filters</p>
-<form action="<%= blocks_path(:district_id => nil)%>", method="get">
-     <%= select_tag :district_id, options_from_collection_for_select(@districts, :id, :name, @district_id), :include_blank => "All Districts", :onchange => 'submit()'  %>
-</form>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= sortable "block_code", "Code" %></th>
-      <th><%= sortable "name"%></th>
-      <th><%= sortable "district_id"%></th>
-      <th>Project Manager</th>
-      <th>Project Director</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blocks.each do |block| %>
-      <tr>
-        <td><%= block.block_code %></td>
-        <td><%= link_to block.name, block %></td>
-        <td><%= block.district.name %></td>
-	<td>
-	<% if (!block.manager.nil?) %>
-		<%= block.manager.user.name %><br />
-	    <%= block.manager.start_date %> - <%= block.manager.end_date %>
-	<% end %>
-	</td>
-	<td>
-	<% if (!block.director.nil?) %>
-	    <%= block.director.user.name %><br />
-	    <%= block.director.start_date %> - <%= block.director.end_date %>
-	<% end %>
-	</td>	
-        <td><%= link_to 'Edit', edit_block_path(block) %></td>
-        <td><%= link_to 'Destroy', block, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Block', new_block_path, :remote => true %>
