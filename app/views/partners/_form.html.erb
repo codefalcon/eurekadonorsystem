@@ -1,0 +1,26 @@
+<%= form_for @partner, :remote => true, :validate => true do |f| %>
+  <% if @partner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@partner.errors.count, "error") %> prohibited this partner from being saved:</h2>
+
+      <ul>
+      <% @partner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<ul class="formFields">
+  <li>
+    <%= f.label :partner_code, 'Code' %>
+    <%= f.text_field :partner_code %>
+   </li>
+  <li>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name, :class => "w70per" %>
+  </li>
+</ul>
+
+<% end %>

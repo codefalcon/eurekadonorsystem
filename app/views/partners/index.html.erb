@@ -1,0 +1,36 @@
+
+<section class="span9">
+  <header class="row-fluid sectionHeader">
+	<div class="span6">
+	<p class="backlinks">&nbsp;</p>
+	  <h2><img src="img/spacer.gif" class="icon_partners" /> Partner</h2>
+	</div>
+	<div class="span6 text-right mt20">
+		<%= link_to new_partner_path, :remote => true do%>
+			  <%= image_tag('/images/spacer.gif', :class =>"icon_add") %> Add Partner
+		<%end%> 
+	</div>
+  </header>
+  <div class="content">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-hover table-striped">
+	     	<tr>
+			<th scope="col"><%= sortable "partner_code", "Code" %></th>
+			<th scope="col"><%= sortable "name"%></th>
+			<th scope="col">Action</th>
+		 </tr>
+		<% @partners.each do |partner| %>
+		  <tr>
+			<td><%= partner.partner_code %></td>
+			<td><%= partner.name %></td>
+			<td>
+				<%= link_to edit_partner_path(partner), :remote => true do%>
+					 <%= image_tag('/images/spacer.gif', :class =>"icon_edit") %> 
+				<%end%>		
+				<%= link_to image_tag('/images/spacer.gif', :class =>'icon_delete') , partner, method: :delete, data: { confirm: 'Are you sure?' }%>
+			</td>
+		  </tr>
+		<% end %>			 
+	</table>
+    </div>
+</section>
+

@@ -41,7 +41,7 @@ module ApplicationHelper
 	FullyAllocated = 2
 
 	def self.FundingStatuses
-            return [["Not Allocated", 0], ["Partially Allocated", 1], ["Fully Allocated", 2]]
+  	    return [["Not Allocated", 0], ["Partially Allocated", 1], ["Fully Allocated", 2]]
 	end 
    end 
 
