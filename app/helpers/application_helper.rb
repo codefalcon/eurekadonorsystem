@@ -35,6 +35,16 @@ module ApplicationHelper
 
    end
 
+   class FundingStatus
+	NotAllocated = 0
+	PartiallyAllocated = 1
+	FullyAllocated = 2
+
+	def self.FundingStatuses
+  	    return [["Not Allocated", 0], ["Partially Allocated", 1], ["Fully Allocated", 2]]
+	end 
+   end 
+
    class DonorType
 	NotApplicable = 0
 	Individual = 1
