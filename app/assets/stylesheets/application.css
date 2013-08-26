@@ -11,8 +11,7 @@
  *= require_self
  *= require_tree .
  */
-
-
+ 
 #modal-container {
   display: none;
   position: fixed;
@@ -26,11 +25,11 @@
 #modal {
   display: none;
   position: absolute;
-  width: 720px;
+  width: 800px;
   left: 30%;
-  top: 25%;
+  top: 15%;
   margin-left: (-600px - 40px) / 2;
-  padding: 10px;
+  /* padding: 10px; */
   background: #fff;
   border: 5px solid #eee;
 }
@@ -46,3 +45,4 @@
 #modal :hover, #modal :active {
       color: #000;
     }
+

@@ -17,6 +17,7 @@
 		      <th><%= sortable "village_code", "Code" %></th>
 		      <th><%= sortable "name"%></th>
 		      <th><%= sortable "block_id"%></th>
+  		      <th>Funding Status</th>
 		      <th>Action</th>
 		    </tr>
 		  </thead>
@@ -27,6 +28,7 @@
 			<td><%= village.village_code %></td>	
 			<td><%= link_to village.name, village %></td>	
 			<td><%= village.block.name %></td>
+			<td><%= village.villageinfo.nil? ? '' : village.villageinfo.Status %></td>
 			<td>	
 			<%= link_to image_tag('/images/spacer.gif', :class => "icon_edit"), edit_village_path(village), :remote => true %>
 			<%= link_to image_tag('/images/spacer.gif', :class => "icon_delete"), village, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -19,12 +19,125 @@
   </li>
   <li>
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'w70per' %>
   </li> 
   <li>
     <%= f.label :block_id %>
-    <%= f.collection_select :block_id, @blocks, :id, :name, :prompt => "Select a block" %>
+    <%= f.collection_select :block_id, @blocks, :id, :name, { :prompt => "Select a block" } ,  { :class => 'w70per' } %>
   </li>
+  <%= f.fields_for :trainer, @village.trainer do |mgr| %>
+  <li>
+    <%= mgr.label 'Block Trainer' %>
+    <%= mgr.collection_select :user_id, @trainers, :id, :name, { :include_blank => "Select a block trainer" } , { :class => 'w70per' }  %>
+ 
+    <div class="addedItems">                    
+          <ul class="nobullet forms row-fluid">
+            <li>
+              <div class="span6">
+                <%= mgr.label 'Start Date' %>
+                <%= mgr.date_field :start_date, :class => "w120" %> 
+                <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a> </div>
+                
+              <div class="span6">
+                <%= mgr.label 'End Date' %>
+                <%= mgr.date_field :end_date, :class => "w120" %>
+                <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a> </div>
+            
+            </li>
+	</ul>
+    </div>
+  </li>
+  <% end %>
+</ul>
+  
+<div class="row-fluid mt20">
+	<%= f.fields_for :teacher_elem, @village.teacher_elem do |mgr| %>
+	<div class="span4 pull-left pr10">
+	  <ul class="nobullet forms">
+	    <li>
+		<%= mgr.label 'Teacher (1-3)' %>
+		<%= mgr.collection_select :user_id, @teachers, :id, :name, :include_blank => "Select a teacher" %>
+	    </li>
+	    <li>
+	      <div class="span12">
+		<%= mgr.label 'Start Date' %>
+                <%= mgr.date_field :start_date, :class => "w120" %> 
+                <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a> </div>
+	    </li>
+	    <li>
+		<div class="span12">
+	      <%= mgr.label 'End Date' %>
+                <%= mgr.date_field :end_date, :class => "w120" %>
+                <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a> </div>
+	    </li>
+	  </ul>
+	</div>
+	<% end %>
+	<%= f.fields_for :teacher_mid, @village.teacher_mid do |mgr| %>
+	<div class="span4 pull-left pl20 bdrL">
+          <ul class="nobullet forms">
+           <li>
+		<%= mgr.label 'Teacher (4-5)' %>
+		<%= mgr.collection_select :user_id, @teachers, :id, :name, :include_blank => "Select a teacher" %>
+	    </li>
+	    <li>
+	      <div class="span12">
+		<%= mgr.label 'Start Date' %>
+                <%= mgr.date_field :start_date, :class => "w120" %> 
+                <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a> </div>
+	    </li>
+	    <li>
+		<div class="span12">
+	      <%= mgr.label 'End Date' %>
+                <%= mgr.date_field :end_date, :class => "w120" %>
+                <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a> </div>
+	    </li>
+          </ul>
+        </div>
+	<% end %>
+	<%= f.fields_for :teacher_high, @village.teacher_high do |mgr| %>
+        <div class="span4 pull-right pl20 bdrL">
+          <ul class="nobullet forms">
+            <li>
+		<%= mgr.label 'Teacher (6-8)' %>
+		<%= mgr.collection_select :user_id, @teachers, :id, :name, :include_blank => "Select a teacher" %>
+	    </li>
+	    <li>
+	      <div class="span12">
+		<%= mgr.label 'Start Date' %>
+                <%= mgr.date_field :start_date, :class => "w120" %> 
+                <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a> </div>
+	    </li>
+	    <li>
+		<div class="span12">
+	      <%= mgr.label 'End Date' %>
+                <%= mgr.date_field :end_date, :class => "w120" %>
+                <a href="javascript:;"><img src="img/spacer.gif" class="icon_calendar" /></a> </div>
+	    </li>
+          </ul>
+        </div>
+	<% end %>
+</div>
+<ul class="formFields">
+  <%= f.fields_for :villageinfo, @village.villageinfo do |v| %>
+  <li>
+	<%= v.label 'Partner' %>
+    	<%= v.collection_select :partner_id, @partners, :id, :name, { :include_blank => "Select a partner" }, { :class => 'w70per' }  %>
+  </li>
+  <li>
+	 <%= v.label :total_funding_required %>
+         <%= v.text_field :total_funding_required, :class => 'w70per'  %>
+  </li>
+  <li>
+         <%= v.label :funding_status %>
+         <%= v.select :funding_status, options_for_select(@funding_status, @village.villageinfo.funding_status), {}, { :class => 'w70per' }  %>
+  </li>
+  <li>
+	 <%= v.label :local_contributions %>
+	 <%= v.text_field :local_contributions, :class => 'w70per'  %>
+  </li>
+  <% end %>
+
 </ul>
 
 <% end %>

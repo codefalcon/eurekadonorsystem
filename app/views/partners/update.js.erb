@@ -1,0 +1,11 @@
+<%- if @partner.errors.any? %>
+  $('#modal-body').html("<%= j(render :template => 'partners/edit.html.erb') %>");
+<%- else %>
+  close_modal();
+  refresh_page();
+<%- end %>
+
+
+
+
+

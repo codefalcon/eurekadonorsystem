@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823092933) do
+ActiveRecord::Schema.define(version: 20130826075146) do
 
   create_table "blocks", force: true do |t|
     t.string   "name"
@@ -105,15 +105,16 @@ ActiveRecord::Schema.define(version: 20130823092933) do
     t.integer  "funding_status"
     t.decimal  "total_funding_required", precision: 12, scale: 2
     t.integer  "initial_cpi"
-    t.string   "ngo_name"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "status"
     t.decimal  "local_contributions",    precision: 12, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "partner_id"
   end
 
+  add_index "villageinfos", ["partner_id"], name: "index_villageinfos_on_partner_id", using: :btree
   add_index "villageinfos", ["village_id"], name: "index_villageinfos_on_village_id", using: :btree
 
   create_table "villages", force: true do |t|
@@ -151,6 +152,7 @@ ActiveRecord::Schema.define(version: 20130823092933) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "grade"
   end
 
   add_index "villageusers", ["user_id"], name: "index_villageusers_on_user_id", using: :btree
