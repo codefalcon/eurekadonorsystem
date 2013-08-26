@@ -1,4 +1,6 @@
 Donorsystem::Application.routes.draw do
+  resources :partners
+
   get "welcome/index"
 
   get "login/new"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130806050025) do
+ActiveRecord::Schema.define(version: 20130823092933) do
 
   create_table "blocks", force: true do |t|
     t.string   "name"
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(version: 20130806050025) do
   add_index "donorvillages", ["user_id"], name: "index_donorvillages_on_user_id", using: :btree
   add_index "donorvillages", ["village_id"], name: "index_donorvillages_on_village_id", using: :btree
 
+  create_table "partners", force: true do |t|
+    t.string   "name"
+    t.string   "partner_code"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -114,7 +122,6 @@ ActiveRecord::Schema.define(version: 20130806050025) do
     t.integer  "block_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "village_id"
     t.string   "village_code"
   end
 
