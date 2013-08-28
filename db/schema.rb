@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130826075146) do
+ActiveRecord::Schema.define(version: 20130826144711) do
 
   create_table "blocks", force: true do |t|
     t.string   "name"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20130826075146) do
 
   create_table "donorinfos", force: true do |t|
     t.integer  "user_id"
-    t.integer  "type"
+    t.integer  "donor_type"
     t.decimal  "amount_donated", precision: 12, scale: 2
     t.decimal  "amount_used",    precision: 12, scale: 2
     t.date     "start_date"

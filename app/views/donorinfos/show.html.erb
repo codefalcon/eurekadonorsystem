@@ -1,39 +1,83 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @donorinfo.user %>
-</p>
+ <div class="row-fluid">
+    <section class="span12">
+      <header class="row-fluid sectionHeader">
+        <div class="span6">
+        <p class="backlinks">
+	  <%= link_to donorinfos_path do %>
+	   <%= image_tag('/images/spacer.gif', :class =>"icon_back") %> Donors
+	  <% end %>
+	</p>        
+        <h2><%= @donorinfo.user.name %></h2>
+        </div>
+        <div class="span6 text-right mt20">
+          <div class="sectionHeader-actions">
+		<%= link_to edit_donorinfo_path(@village), :remote => true do%>
+		     <%= image_tag('/images/spacer.gif', :class =>"icon_edit") %> Edit
+	        <%end%>
+	  </div>
+        </div>
+      </header>
+      <div class="content">
+         <div class="span12">
+	    <ul class="formFields">
+		<li>
+		  <strong>Donor Code:</strong>
+		  <%= @donorinfo.user.user_id %>
+		</li>
+		
+		<li>
+		  <strong>User:</strong>
+		  <%= @donorinfo.user.name %>
+		</li>
 
-<p>
-  <strong>Type:</strong>
-  <%= @donorinfo.type %>
-</p>
+		<li>
+		  <strong>Type:</strong>
+		  <%= @donorinfo.Type %>
+		</li>
 
-<p>
-  <strong>Amount donated:</strong>
-  <%= @donorinfo.amount_donated %>
-</p>
+		<li>
+		  <strong>Email Address:</strong>
+		  <%= @donorinfo.user.email_address %>
+		</li>
+				
+		<li>
+		  <strong>Phone:</strong>
+		  <%= @donorinfo.user.phone_number %>
+		</li>
 
-<p>
-  <strong>Amount used:</strong>
-  <%= @donorinfo.amount_used %>
-</p>
+		<li>
+		  <strong>Funding status:</strong>
+		  <%= @donorinfo.Status %>
+		</li>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @donorinfo.start_date %>
-</p>
+		<li>
+		  <strong>Available Fund:</strong>
+		  <%= number_to_currency(@donorinfo.amount_donated - @donorinfo.amount_used, :unit => "Rs.") %>/-
+		</li>
 
-<p>
-  <strong>End date:</strong>
-  <%= @donorinfo.end_date %>
-</p>
+		<li>
+		  <strong>Renewal date:</strong>
+		  <%= @donorinfo.end_date %>
+		</li>
+	
+	    </ul>
+	    <div class="row-fluid mt20">
+		    <h4>Donation Details</h4>
+		    <div class="pre-scrollable" style="max-height:230px">
+		      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-hover table-striped">
+		        <% @donorinfo.villages.each do |d| %>
+		        <tr>
+		          <td><strong class="pull-right">Rs. <%=d.amount_for_village%>/-</strong> <a href="javascript:;"><%= d.village.name%></a><br>
+		            <span class="muted"><%=d.start_date%> - <%=d.end_date%></span></td>
+		        </tr>
+			<% end %>
+		      </table>
+		    </div>
+           </div>
+	</div>
+    </section>
+  </div>
+</div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @donorinfo.status %>
-</p>
-
-<%= link_to 'Edit', edit_donorinfo_path(@donorinfo) %> |
-<%= link_to 'Back', donorinfos_path %>

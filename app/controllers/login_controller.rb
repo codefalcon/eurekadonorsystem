@@ -7,7 +7,7 @@ class LoginController < ApplicationController
 	user = User.find_by_login(params[:login])
 	if user && user.authenticate(params[:password])
 	    session[:user_id] = user.id
-	    redirect_to welcome_index_path, :notice => "Welcome back, #{user.email_address}"
+	    redirect_to districts_path, :notice => "Welcome back, #{user.email_address}"
 	else
 	    flash.now[:alert] = "Invalid login or password"
 	    #render "new"
