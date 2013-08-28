@@ -25,7 +25,65 @@
 		<li><label>Village Code</label> <%= @village.village_code %></li>
 		<li><label>Village Name</label> <%= @village.name %></li>
 	        <li><label>Block</label> <%= @village.block.name %></li>
-	     </ul>
+	        <li>
+                   <label>Block Trainer</label>
+		   <div class="addedItems"><%=@village.trainer.user.name%><br>
+		        <span class="muted"><%=@village.trainer.start_date%> - <%=@village.trainer.end_date%></span></div>
+                </li>
+             </ul>
+              <div class="row-fluid mt20 mb20">
+            <div class="span4 pull-left pr10">
+              <h4>Teacher (1-3)</h4>
+	      <% if(!@village.teacher_elem.nil?) %>
+              <ul class="nobullet">
+                <li><%= @village.teacher_elem.user.name%> <br>
+                  <span class="muted"><%= @village.teacher_elem.start_date%> - <%=@village.teacher_elem.end_date%></span> </li>
+              </ul>
+	      <% end %>
+            </div>
+            <div class="span4 pull-left pl20 bdrL">
+              <h4>Teacher (4-5)</h4>
+	      <% if(!@village.teacher_mid.nil?) %>
+              <ul class="nobullet">
+                <li><%=@village.teacher_mid.user.name%><br>
+                  <span class="muted"><%=@village.teacher_mid.start_date%> - <%=@village.teacher_mid.end_date%></span> </li>
+              </ul>
+	      <% end %>
+            </div>
+            <div class="span4 pull-left pl20 bdrL">
+              <h4>Teacher (6-8)</h4>
+	      <% if(!@village.teacher_high.nil?) %>
+              <ul class="nobullet">
+                <li><%=@village.teacher_high.user.name%><br>
+                  <span class="muted"><%=@village.teacher_high.start_date%> - <%=@village.teacher_high.end_date%></span> </li>
+              </ul>
+	      <% end %>
+            </div>
+          </div>
+          <ul class="formFields">
+            <li>
+              <label>Partner</label>
+              <%=@village.villageinfo.partner_id.nil? ? '' : @village.villageinfo.partner.name%></li>
+            <li>
+              <label>Funding Status</label>
+              <span class="text-success"><%=@village.villageinfo.Status%></span></li>
+            <li>
+              <label>Local Funding</label>
+              <%=@village.villageinfo.local_contributions%></li>
+          </ul>
+	  <div class="row-fluid mt20">
+            <h4>Donors</h4>
+            <div class="pre-scrollable" style="max-height:230px">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-hover table-striped">
+                <% @village.donors.each do |d| %>
+                <tr>
+                  <td><strong class="pull-right">Rs. <%=d.amount_for_village%>/-</strong> <a href="javascript:;"><%= d.user.name%></a><br>
+                    <span class="muted"><%=d.start_date%> - <%=d.end_date%></span></td>
+                </tr>
+		<% end %>
+              </table>
+            </div>
+          </div>
 	  </div>
       </div>
     </section>

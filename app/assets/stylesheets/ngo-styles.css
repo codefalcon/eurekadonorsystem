@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-body,input,select{ font-family:Arial, Helvetica, sans-serif; font-size:12px}
+body,input,select{ font-family:Arial, Helvetica, sans-serif; font-size:12px; }
 a:hover{ text-decoration:none}
 .container{ width:98%}
 
@@ -63,6 +63,12 @@ label{ font-weight:bold}
 .mr10{ margin-right:10px}
 .mr15{ margin-right:15px}
 .mr20{ margin-right:20px}
+.ml0{ margin-left:0px}
+.ml5{ margin-left:5px}
+.ml10{ margin-left:10px}
+.ml15{ margin-left:15px}
+.ml20{ margin-left:20px}
+
 .p0{ padding:0}
 .p5{ padding:5px}
 .p10{ padding:10px}
@@ -95,6 +101,8 @@ label{ font-weight:bold}
 .bdrT{ border-top:1px solid #ccc}
 .clear{ clear:both}
 
+.wAuto{ width:auto !important}
+
 .w100per{ width:100%}
 .w80per{ width:80%}
 .w50per{ width:50%}
@@ -111,6 +119,7 @@ label{ font-weight:bold}
 .w200{ width:200px}
 .w225{ width:225px}
 .w250{ width:250px}
+.chkBox{ font-weight:normal !important; width:auto; padding:0 10px 10px 0; width:auto !important; font-size:12px}
 
 .btnGray,.btnGray:hover{ background:#ccc; color:#333; font-weight:bold; font-size:15px; padding:5px 10px; margin-left:10px}
 .btnGreen,.btnGreen:hover{ background:#6aa84f; color:#fff; font-weight:bold; font-size:15px; padding:5px 10px; margin-left:10px}

@@ -1,6 +1,8 @@
 class DonorvillagesController < ApplicationController
   before_filter :login_required
   before_action :set_donorvillage, only: [:show, :edit, :update, :destroy]
+  before_action :load_arrays
+  include ApplicationHelper
 
   # GET /donorvillages
   # GET /donorvillages.json
@@ -71,5 +73,11 @@ class DonorvillagesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def donorvillage_params
       params.require(:donorvillage).permit(:village_id, :user_id, :start_date, :end_date, :amount_for_village, :status)
+    end
+
+    def load_arrays
+	@villages = Village.where('status = ?', Status::Active)
+
+	@donors = User.where('status = :status and role = :role and id in (:id)', { status: Status::Active, role: Role::Donor, id: Donorinfo.all.collect(&:user_id) } )
     end
 end
