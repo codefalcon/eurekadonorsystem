@@ -23,6 +23,10 @@
     <%= f.label :district_id %>
     <%= f.collection_select :district_id, @districts, :id, :name, {:prompt => "Select District"}, {:class => "w70per"} %>
   </li>
+  <li>
+	<%= f.label 'Partner' %>
+    	<%= f.collection_select :partner_id, @partners, :id, :name, { :include_blank => "Select a partner" }, { :class => 'w70per' }  %>
+  </li>
 </ul>
 <div class="row-fluid mt20">
   <div class="span6 pull-left pr10">

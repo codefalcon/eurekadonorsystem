@@ -60,10 +60,7 @@
 	      <% end %>
             </div>
           </div>
-          <ul class="formFields">
-            <li>
-              <label>Partner</label>
-              <%=@village.villageinfo.partner_id.nil? ? '' : @village.villageinfo.partner.name%></li>
+          <ul class="formFields">           
             <li>
               <label>Funding Status</label>
               <span class="text-success"><%=@village.villageinfo.Status%></span></li>

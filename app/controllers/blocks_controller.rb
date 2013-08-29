@@ -97,7 +97,7 @@ class BlocksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
       if(params[:block].present?)
-	 params.require(:block).permit(:name, :block_code, :district_id, manager_attributes: [:id, :user_id, :start_date, :end_date], director_attributes: [:id, :user_id, :start_date, :end_date])
+	 params.require(:block).permit(:name, :block_code, :district_id, :partner_id, manager_attributes: [:id, :user_id, :start_date, :end_date], director_attributes: [:id, :user_id, :start_date, :end_date])
       end
     end
 
@@ -109,6 +109,8 @@ class BlocksController < ApplicationController
       @directors = User.find_all_by_role_and_status(Role::Project_Director, Status::Active)
 
       @trainers = User.find_all_by_role_and_status(Role::Block_Trainer, Status::Active)
+
+      @partners = Partner.find_all_by_status(Status::Active)
    end 
 
    def sort_column
