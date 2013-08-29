@@ -3,6 +3,7 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   has_many :block, through: :blockuser
   has_many :village, through: :villageuser
+  has_many :donorinfo, through: :donorinfo
   has_secure_password :password_confirmation => nil
   validates :password, :presence => true,  :confirmation => true, :length => {:within => 6..40}, :on => :create
   validates :password, :confirmation => true, :length => { :within => 6..40 }, :on => :update, :unless => lambda{ |user| user.password.blank? }

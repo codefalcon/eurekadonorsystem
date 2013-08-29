@@ -3,7 +3,7 @@ class Donorinfo < ActiveRecord::Base
   include ApplicationHelper
   
   def Type
-	donor_type = DonorType.DonorTypes().select { |key, value| value == self.type }
+	donor_type = DonorType.DonorTypes().select { |key, value| value == self.donor_type }
 	
 	if donor_type.nil? 
 		return nil 
@@ -26,5 +26,9 @@ class Donorinfo < ActiveRecord::Base
 		return "Partially Allocated"
 	end 
   end
+
+  def villages
+     Donorvillage.find_all_by_user_id_and_status(self.user_id, Status::Active)
+  end 
   
 end
