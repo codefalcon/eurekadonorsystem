@@ -3,7 +3,7 @@ class Village < ActiveRecord::Base
 
   validates_length_of :name, within: 2..40, message: "Invalid name"
   validates :name, :uniqueness => {:scope => :block_id}
-  validates :village_code, :uniqueness => true, :unless => lambda{ |v| v.village_code.empty? } 
+  validates :village_code, :uniqueness => true, :unless => lambda{ |v| v.village_code.to_s.empty? } 
   validates_presence_of :block_id
   include ApplicationHelper  
 

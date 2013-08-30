@@ -26,6 +26,7 @@
 	<li><label>Block Code</label> <%= @block.block_code  %></li>
         <li><label>Block Name</label> <%= @block.name %></li>
         <li><label>District Name</label> <%= @block.district.name %></li>
+	 <li><label>Partner</label><%=@block.partner_id.nil? ? ' ' : @block.partner.name%></li>
 	<li><label>Project Manager</label>
             <div class="addedItems">
 		<% if (!@block.manager.nil?) %>
