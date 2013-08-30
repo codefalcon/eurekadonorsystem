@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130829123033) do
+ActiveRecord::Schema.define(version: 20130830052257) do
 
   create_table "blocks", force: true do |t|
     t.string   "name"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20130829123033) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "village_code"
+    t.boolean  "construction"
+    t.string   "additional_program"
   end
 
   add_index "villages", ["block_id"], name: "index_villages_on_block_id", using: :btree
@@ -139,9 +141,6 @@ ActiveRecord::Schema.define(version: 20130829123033) do
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "common_program"
-    t.boolean  "construction"
-    t.string   "additional_program"
     t.decimal  "fees_collected",     precision: 12, scale: 2
   end
 
