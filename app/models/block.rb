@@ -10,4 +10,7 @@ class Block < ActiveRecord::Base
   has_many :trainers, :class_name => 'Blockuser', :conditions => { :status => Status::Active , :role => Role::Block_Trainer }
   accepts_nested_attributes_for :trainers, :reject_if => lambda { |a| a[:user_id].nil? }
 
+  belongs_to :partner, foreign_key: "partner_id", class_name: "Partner"
+
+
 end
