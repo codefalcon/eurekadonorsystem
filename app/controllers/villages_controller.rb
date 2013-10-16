@@ -196,8 +196,6 @@ class VillagesController < ApplicationController
 
       @teachers = User.find_all_by_role_and_status(Role::Teacher, Status::Active)
 
-      @partners = Partner.find_all_by_status(Status::Active)
-
       @funding_status = FundingStatus.FundingStatuses()
    end 
     

@@ -119,11 +119,7 @@
 	<% end %>
 </div>
 <ul class="formFields">
-  <%= f.fields_for :villageinfo, @village.villageinfo do |v| %>
-  <li>
-	<%= v.label 'Partner' %>
-    	<%= v.collection_select :partner_id, @partners, :id, :name, { :include_blank => "Select a partner" }, { :class => 'w70per' }  %>
-  </li>
+  <%= f.fields_for :villageinfo, @village.villageinfo do |v| %>  
   <li>
 	 <%= v.label :total_funding_required %>
          <%= v.text_field :total_funding_required, :class => 'w70per'  %>

@@ -1,4 +1,4 @@
-<%= form_for(@donorinfo) do |f| %>
+<%= form_for @donorinfo, :remote => true, :validate => true do |f| %>
   <% if @donorinfo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@donorinfo.errors.count, "error") %> prohibited this donorinfo from being saved:</h2>
@@ -11,35 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user %><br>
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.number_field :type %>
-  </div>
-  <div class="field">
-    <%= f.label :amount_donated %><br>
+  <ul class="formFields">
+  <li>
+    <%= f.label :user %>
+    <% if (@donorinfo.new_record?) %>
+	<%= f.collection_select :user_id, @donors, :id, :name, {:prompt => "Select User"}, {:class => "w70per"} %>
+    <% else %>
+    	<%= f.collection_select :user_id, @donors, :id, :name, {:prompt => "Select User"}, {:class => "w70per", :disabled => "disabled"} %>
+    <% end %>
+  </li>
+  <li>
+   	<%= f.label :donor_type %>      	 
+	<%= f.label :donor_type, :value => "1", :class => "chkBox" do %>	    
+		<%= f.radio_button :donor_type, '1' %>	   
+		Individual
+	<% end %>
+        <%= f.label :donor_type, :value => "2", :class => "chkBox" do %>    
+	        <%= f.radio_button :donor_type, '2', :checked => (@donorinfo.donor_type == 2) %>
+		Corporation
+	<% end %>
+  </li>
+  <li>
+    <%= f.label :amount_donated %>
     <%= f.text_field :amount_donated %>
-  </div>
-  <div class="field">
-    <%= f.label :amount_used %><br>
+  </li>
+  <li>
+    <%= f.label :amount_used %>
     <%= f.text_field :amount_used %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </li> 
+  <li>
+    <%= f.label :end_date, 'Renewal Date' %>
+    <%= f.date_field :end_date %>
+  </li>
 <% end %>

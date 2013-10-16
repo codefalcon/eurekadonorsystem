@@ -5,7 +5,7 @@
 		  <h2>Donors</h2>
 		</div>
 		<div class="span6 text-right mt20">
-	   	   <%= link_to new_donorinfo_path do %>
+	   	   <%= link_to new_donorinfo_path, :remote => true do %>
 		      <%= image_tag('/images/spacer.gif', :class => "icon_add") %> Add Donor
 	  	   <% end %>
 		</div>
@@ -30,16 +30,16 @@
 	   		<td><%= donorinfo.user.email_address %></td>
 	   		<td><%= donorinfo.Type %></td>
 			<td>
-			    <% if (donorinfo.amountused == 0) %>
+			    <% if (donorinfo.amount_used == 0) %>
 				<font color="red">Not Allocated</font>
-			    <% elsif (donorinfo.amountdonated > donorinfo.amountused) %>
+			    <% elsif (donorinfo.amount_donated > donorinfo.amount_used) %>
 				<font color="yellow">Partially Allocated</font>
 			    <% else %>
 				<font color="green">Fully Allocated</font>
 			    <% end %> 
 			</td>		
 			<td>	
-			<%= link_to image_tag('/images/spacer.gif', :class => "icon_edit"), edit_donorinfo_path(donorinfo) %>
+			<%= link_to image_tag('/images/spacer.gif', :class => "icon_edit"), edit_donorinfo_path(donorinfo), :remote => true %>
 			<%= link_to image_tag('/images/spacer.gif', :class => "icon_delete"), donorinfo, method: :delete, data: { confirm: 'Are you sure?' } %>
 			</td>
 		      </tr>
